@@ -16,7 +16,6 @@ npm install --save chakra-ui-autocomplete
 import React, { Component } from 'react'
 
 import MyComponent from 'chakra-ui-autocomplete'
-import 'chakra-ui-autocomplete/dist/index.css'
 
 class Example extends Component {
   render() {
@@ -24,6 +23,12 @@ class Example extends Component {
   }
 }
 ```
+
+## Todo
+
+- [] Create Combobox Support
+- [] Create Multi Select Support
+- [] Feature to Create when not in list
 
 ## License
 

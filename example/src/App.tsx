@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { ChakraMultipleCreate } from 'chakra-ui-autocomplete'
-import 'chakra-ui-autocomplete/dist/index.css'
 
 
 // import { CreateablePicker, Item } from "./CreateablePicker";
@@ -50,10 +49,3 @@ export default function App() {
     </div>
   );
 }
-
-
-// const App = () => {
-//   return <ExampleComponent text="Create React Library Example 😄" />
-// }
-
-// export default App

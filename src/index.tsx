@@ -1,11 +1,7 @@
 /* eslint-disable prettier/prettier */
 import * as React from 'react'
-import {
-  useCombobox,
-  useMultipleSelection,
-  // eslint-disable-next-line no-unused-vars
-  UseMultipleSelectionProps
-} from 'downshift'
+// eslint-disable-next-line no-unused-vars
+import { useCombobox, useMultipleSelection, UseMultipleSelectionProps } from 'downshift'
 import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
@@ -25,8 +21,7 @@ export interface Item {
   value: string
 }
 
-export interface ChakraMultipleCreateProps<T extends Item>
-  extends UseMultipleSelectionProps<T> {
+export interface ChakraMultipleCreateProps<T extends Item> extends UseMultipleSelectionProps<T> {
   items: T[]
   placeholder: string
   onCreateItem?: (item: T) => void
@@ -67,13 +62,7 @@ export const ChakraMultipleCreate = <T extends Item>(
     }
   )
 
-  const {
-    getSelectedItemProps,
-    getDropdownProps,
-    addSelectedItem,
-    removeSelectedItem,
-    selectedItems
-  } = useMultipleSelection(downshiftProps)
+  const { getSelectedItemProps, getDropdownProps, addSelectedItem, removeSelectedItem, selectedItems } = useMultipleSelection(downshiftProps)
 
   const selectedItemValues = selectedItems.map((item) => item.value)
 
@@ -182,19 +171,14 @@ export const ChakraMultipleCreate = <T extends Item>(
 
   return (
     <div className='relative'>
-      <label
-        {...getLabelProps({
-          className: 'font-medium text-gray-700 text-xs mb-2 block'
-        })}
-      >
+      <label {...getLabelProps({})}>
         Choose some fruits:
-      </label>
+            </label>
       <div>
         <div className='my-2'>
           {selectedItems.map((selectedItem, index) => (
             <span
               key={`selected-item-${index}`}
-              className='inline-flex items-center px-2 py-1 rounded-full text-xs font-medium leading-4 bg-indigo-100 text-indigo-800 focus:outline-none focus:shadow-outline mr-2'
               {...getSelectedItemProps({ selectedItem, index })}
             >
               {selectedItem.label}
@@ -204,7 +188,6 @@ export const ChakraMultipleCreate = <T extends Item>(
                   removeSelectedItem(selectedItem)
                 }}
                 type='button'
-                className='flex-shrink-0 ml-1 inline-flex text-indigo-500 focus:outline-none focus:text-indigo-700'
                 aria-label='Remove small badge'
               >
                 &#10005;
@@ -212,12 +195,10 @@ export const ChakraMultipleCreate = <T extends Item>(
             </span>
           ))}
         </div>
-        <div className='relative' {...getComboboxProps()}>
+        <div {...getComboboxProps()}>
           <input
             {...getInputProps(
               getDropdownProps({
-                className:
-                  'w-full p-2 text-sm focus:outline-none focus:shadow-outline rounded border border-gray-400',
                 placeholder,
                 onClick: isOpen ? () => { } : openMenu,
                 onFocus: isOpen ? () => { } : openMenu,
@@ -225,28 +206,23 @@ export const ChakraMultipleCreate = <T extends Item>(
               })
             )}
           />
-          <div className='absolute right-0 top-0 bottom-0 flex items-center justify-center'>
-            <button
-              className='text-gray-600 px-3 h-full focus:outline-none focus:shadow-outline'
-              {...getToggleButtonProps()}
-              aria-label='toggle menu'
-            >
-              &#8595;
-            </button>
+          <div>
+            <button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </button>
           </div>
         </div>
         <div
           style={styles.popper}
           {...attributes.popper}
-          {...getMenuProps({ ref: popoverRef, className: ' w-full' })}
+          {...getMenuProps({ ref: popoverRef, })}
         >
-          <ul className='bg-white shadow-md'>
+          <ul>
             {isOpen &&
               inputItems.map((item, index) => (
                 <li
                   className={cc({
                     'p-2 text-sm bg-white border-b': true,
-                    'bg-gray-100': highlightedIndex === index
+                    'bg-gray-100':
+                      highlightedIndex === index
                   })}
                   key={`${item.value}${index}`}
                   {...getItemProps({ item, index })}
@@ -254,21 +230,28 @@ export const ChakraMultipleCreate = <T extends Item>(
                   {isCreating ? (
                     <p>
                       <span>Create</span>{' '}
-                      <span className='font-medium bg-yellow-300 text-yellow-900'>
+                      <span>
                         {item.label}
                       </span>
                     </p>
                   ) : (
-                      <div className='flex items-center space-x-2'>
-                        {selectedItemValues.includes(item.value) && (
-                          <span role='img' aria-label='Selected'>
-                            x
-                          </span>
-                        )}
+                      <div>
+                        {selectedItemValues.includes(
+                          item.value
+                        ) && (
+                            <span
+                              role='img'
+                              aria-label='Selected'
+                            >
+                              x
+                            </span>
+                          )}
                         <Highlighter
                           autoEscape
                           searchWords={[inputValue || '']}
-                          textToHighlight={itemRenderer(item)}
+                          textToHighlight={itemRenderer(
+                            item
+                          )}
                           highlightClassName='bg-yellow-300'
                         />
                       </div>
