@@ -1,7 +1,7 @@
-import { ExampleComponent } from '.'
+import { ChakraMultipleCreate } from '.'
 
-describe('ExampleComponent', () => {
+describe('ChakraMultipleCreate', () => {
   it('is truthy', () => {
-    expect(ExampleComponent).toBeTruthy()
+    expect(ChakraMultipleCreate).toBeTruthy()
   })
 })
