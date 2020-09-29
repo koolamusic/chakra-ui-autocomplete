@@ -27,6 +27,8 @@
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
+		"@emotion/core": "^10.0.35",
+		"@emotion/styled": "^10.0.27",
 		"@popperjs/core": "^2.5.2",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
@@ -41,6 +43,7 @@
 		"@typescript-eslint/parser": "^2.26.0",
 		"babel-eslint": "^10.0.3",
 		"cross-env": "^7.0.2",
+		"emotion-theming": "^10.0.27",
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.7.0",
 		"eslint-config-standard": "^14.1.0",
@@ -69,6 +72,7 @@
 		"dist"
 	],
 	"dependencies": {
+		"@chakra-ui/core": "^0.8.0",
 		"classcat": "^4.1.0",
 		"downshift": "^6.0.6"
 	}
