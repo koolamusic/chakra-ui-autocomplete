@@ -1,4 +1,5 @@
 import React from 'react'
+import { ThemeProvider, CSSReset, Flex } from '@chakra-ui/core'
 
 import { ChakraMultipleCreate } from 'chakra-ui-autocomplete'
 
@@ -34,8 +35,11 @@ export default function App() {
   };
 
   return (
-    <div className="h-screen bg-gray-100 pt-10">
-      <div className="max-w-md w-full mx-auto">
+    <ThemeProvider>
+      <CSSReset />
+
+      <Flex justify="center" width="100%">
+
         <ChakraMultipleCreate
           placeholder="Type name of fruit"
           onCreateItem={handleCreateItem}
@@ -45,7 +49,8 @@ export default function App() {
             handleSelectedItemsChange(changes.selectedItems)
           }
         />
-      </div>
-    </div>
+
+      </Flex>
+    </ThemeProvider >
   );
 }

@@ -41,11 +41,17 @@ export const ChakraMultipleCreate = <T extends Item>(
     onCreateItem,
     ...downshiftProps
   } = props
+
+  /* States */
   const [isCreating, setIsCreating] = React.useState(false)
   const [inputValue, setInputValue] = React.useState('')
   const [inputItems, setInputItems] = React.useState<T[]>(items)
+
+  /* Refs */
   const disclosureRef = React.useRef(null)
   const popoverRef = React.useRef(null)
+
+  /* use React Popper */
   const { styles, attributes, forceUpdate } = usePopper(
     disclosureRef.current,
     popoverRef.current,
@@ -170,12 +176,12 @@ export const ChakraMultipleCreate = <T extends Item>(
   }, [selectedItems, forceUpdate])
 
   return (
-    <div className='relative'>
+    <div>
       <label {...getLabelProps({})}>
         Choose some fruits:
             </label>
       <div>
-        <div className='my-2'>
+        <div>
           {selectedItems.map((selectedItem, index) => (
             <span
               key={`selected-item-${index}`}
@@ -210,56 +216,55 @@ export const ChakraMultipleCreate = <T extends Item>(
             <button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </button>
           </div>
         </div>
-        <div
+        {/* <div
           style={styles.popper}
           {...attributes.popper}
           {...getMenuProps({ ref: popoverRef, })}
-        >
-          <ul>
-            {isOpen &&
-              inputItems.map((item, index) => (
-                <li
-                  className={cc({
-                    'p-2 text-sm bg-white border-b': true,
-                    'bg-gray-100':
-                      highlightedIndex === index
-                  })}
-                  key={`${item.value}${index}`}
-                  {...getItemProps({ item, index })}
-                >
-                  {isCreating ? (
-                    <p>
-                      <span>Create</span>{' '}
-                      <span>
-                        {item.label}
-                      </span>
-                    </p>
-                  ) : (
-                      <div>
-                        {selectedItemValues.includes(
-                          item.value
-                        ) && (
-                            <span
-                              role='img'
-                              aria-label='Selected'
-                            >
-                              x
-                            </span>
-                          )}
-                        <Highlighter
-                          autoEscape
-                          searchWords={[inputValue || '']}
-                          textToHighlight={itemRenderer(
-                            item
-                          )}
-                          highlightClassName='bg-yellow-300'
-                        />
-                      </div>
-                    )}
-                </li>
-              ))}
-          </ul>
-        </div>
+        > */}
+        <ul {...getMenuProps()}>
+          {isOpen &&
+            inputItems.map((item, index) => (
+              <li
+                className={cc({
+                  'p-2 text-sm bg-white border-b': true,
+                  'bg-gray-100':
+                    highlightedIndex === index
+                })}
+                key={`${item.value}${index}`}
+                {...getItemProps({ item, index })}
+              >
+                {isCreating ? (
+                  <p>
+                    <span>Create</span>{' '}
+                    <span>
+                      {item.label}
+                    </span>
+                  </p>
+                ) : (
+                    <div>
+                      {selectedItemValues.includes(
+                        item.value
+                      ) && (
+                          <span
+                            role='img'
+                            aria-label='Selected'
+                          >
+                            x
+                          </span>
+                        )}
+                      <Highlighter
+                        autoEscape
+                        searchWords={[inputValue || '']}
+                        textToHighlight={itemRenderer(
+                          item
+                        )}
+                      />
+                    </div>
+                  )}
+              </li>
+            ))}
+        </ul>
+        {/* </div> */}
       </div>
     </div>
   )
