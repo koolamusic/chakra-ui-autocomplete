@@ -1,5 +1,6 @@
 import React from 'react'
 import { ThemeProvider, CSSReset, Flex } from '@chakra-ui/core'
+import theme from './theme'
 import { CUIAutoComplete } from 'chakra-ui-autocomplete'
 
 
@@ -7,8 +8,6 @@ export interface Item {
   label: string;
   value: string;
 }
-
-
 const countries = [
   { value: "ghana", label: "Ghana" },
   { value: "nigeria", label: "Nigeria" },
@@ -35,7 +34,7 @@ export default function App() {
   };
 
   return (
-    <ThemeProvider>
+    <ThemeProvider theme={theme}>
       <CSSReset />
 
       <Flex flexWrap="wrap" px={6} pt={12} height="100vh" bg="rgba(247,250,252)" justify="center" maxW="800px" borderRight="1px solid #ddd" >
