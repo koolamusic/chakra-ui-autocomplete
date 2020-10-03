@@ -1,19 +1,21 @@
 /* eslint-disable prettier/prettier */
 import * as React from 'react'
-// eslint-disable-next-line no-unused-vars
 import { useCombobox, useMultipleSelection, UseMultipleSelectionProps } from 'downshift'
 import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
 import cc from 'classcat'
+import ThemeProvider from '@chakra-ui/core/dist/ThemeProvider'
+import FormLabel, { FormLabelProps } from '@chakra-ui/core/dist/FormLabel'
+import Tag, { TagCloseButton, TagLabel } from '@chakra-ui/core/dist/Tag'
+import Box, { BoxProps } from '@chakra-ui/core/dist/Box'
+import Input, { InputProps } from '@chakra-ui/core/dist/Input'
+
 import {
-  Input, Button,
-  //  List, ListItem,
+  Button,
+  List, ListItem, ListIcon,
   Text,
-  FormLabel, Box,
-  ThemeProvider,
-  InputProps,
-  BoxProps,
+  Stack,
 } from '@chakra-ui/core'
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
@@ -43,7 +45,7 @@ export interface ChakraMultipleCreateProps<T extends Item> extends UseMultipleSe
   tagStyleProps?: InputProps
   selectedIconProps?: InputProps
   menuStyleProps?: BoxProps
-  inputLabelStyleProps?: BoxProps
+  labelStyleProps?: FormLabelProps
 
 
 }
@@ -174,29 +176,30 @@ export const ChakraMultipleCreate = <T extends Item>(
 
   return (
     <ThemeProvider>
-      <FormLabel {...getLabelProps({})}>{label}</FormLabel>
-      <div>
-        <div>
-          {selectedItems.map((selectedItem, index) => (
-            <Box as="span"
-              key={`selected-item-${index}`}
-              {...getSelectedItemProps({ selectedItem, index })}
-            >
-              {selectedItem.label}
-              <Button
-                onClick={(e) => {
-                  e.stopPropagation()
-                  removeSelectedItem(selectedItem)
-                }}
-                type='button'
-                aria-label='Remove small badge'
-              >
-                &#10005;
-              </Button>
-            </Box>
-          ))}
-        </div>
-        <div {...getComboboxProps()}>
+      <Stack>
+        <FormLabel {...getLabelProps({})}>{label}</FormLabel>
+
+        {/* ---------Stack with Selected Menu Tags above the Input Box--------- */}
+        {selectedItems &&
+          <Stack spacing={2} isInline>
+            {selectedItems.map((selectedItem, index) => (
+              <Tag key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
+                <TagLabel>{selectedItem.label}</TagLabel>
+                <TagCloseButton
+                  onClick={(e) => {
+                    e.stopPropagation()
+                    removeSelectedItem(selectedItem)
+                  }}
+                  aria-label='Remove menu selection badge'
+                />
+              </Tag>
+            ))}
+          </Stack>
+        }
+        {/* ---------Stack with Selected Menu Tags above the Input Box--------- */}
+
+        {/* -----------Section that renders the input element ----------------- */}
+        <Stack isInline {...getComboboxProps()}>
           <Input
             {...getInputProps(
               getDropdownProps({
@@ -207,15 +210,16 @@ export const ChakraMultipleCreate = <T extends Item>(
               })
             )}
           />
-          <div>
-            <Button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </Button>
-          </div>
-        </div>
-        <Box as="ul" {...menuStyleProps} {...getMenuProps()}>
+          <Button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </Button>
+        </Stack>
+        {/* -----------Section that renders the input element ----------------- */}
+
+
+        {/* -----------Section that renders the Menu Lists Component ----------------- */}
+        <List as="ul" {...menuStyleProps} {...getMenuProps()}>
           {isOpen &&
             inputItems.map((item, index) => (
-              <li
-
+              <ListItem
                 className={cc({
                   'p-2 text-sm bg-white border-b': true,
                   'bg-gray-100':
@@ -236,12 +240,12 @@ export const ChakraMultipleCreate = <T extends Item>(
                       {selectedItemValues.includes(
                         item.value
                       ) && (
-                          <span
+                          <ListIcon
+                            icon="check-circle" color="green.500"
                             role='img'
+                            fontSize=".7rem"
                             aria-label='Selected'
-                          >
-                            x
-                          </span>
+                          />
                         )}
                       <Highlighter
                         autoEscape
@@ -252,10 +256,12 @@ export const ChakraMultipleCreate = <T extends Item>(
                       />
                     </div>
                   )}
-              </li>
+              </ListItem>
             ))}
-        </Box>
-      </div>
+        </List>
+        {/* ----------- End Section that renders the Menu Lists Component ----------------- */}
+
+      </Stack>
     </ThemeProvider>
   )
 }

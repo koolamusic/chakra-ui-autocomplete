@@ -2,10 +2,10 @@
 	"name": "chakra-ui-autocomplete",
 	"version": "1.0.0",
 	"description": "An autocomplete utility library for chakra UI",
-	"author": "koolamusic",
+	"author": "Andrew Miracle <me@andrewmiracle.com>",
 	"license": "MIT",
-	"repository": "koolamusic/chakra-ui-autocomplete",
 	"main": "dist/index.js",
+	"typings": "dist/index.d.ts",
 	"module": "dist/index.modern.js",
 	"source": "src/index.tsx",
 	"engines": {
@@ -68,9 +68,12 @@
 		"react-use": "^15.3.4",
 		"typescript": "^3.7.5"
 	},
-	"files": [
-		"dist"
-	],
+	"files": [ "dist" ],
+	"keywords": [ "Chakra UI", "downshift", "autocomplete", "combobox", "react", "chakra-ui", "multiselect-chakra-ui" ],
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/koolamusic/chakra-ui-autocomplete.git"
+	},
 	"dependencies": {
 		"@chakra-ui/core": "^0.8.0",
 		"classcat": "^4.1.0",
