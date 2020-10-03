@@ -7,13 +7,14 @@ import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
 import cc from 'classcat'
 import ThemeProvider from '@chakra-ui/core/dist/ThemeProvider'
 import FormLabel, { FormLabelProps } from '@chakra-ui/core/dist/FormLabel'
-import Tag, { TagCloseButton, TagLabel } from '@chakra-ui/core/dist/Tag'
+import Tag, { TagCloseButton, TagLabel, TagProps } from '@chakra-ui/core/dist/Tag'
 import Box, { BoxProps } from '@chakra-ui/core/dist/Box'
+import Button, { ButtonProps } from '@chakra-ui/core/dist/Button'
+import { PseudoBoxProps } from '@chakra-ui/core/dist/PseudoBox'
 import Input, { InputProps } from '@chakra-ui/core/dist/Input'
+import List, { ListItem, ListIcon } from '@chakra-ui/core/dist/List'
 
 import {
-  Button,
-  List, ListItem, ListIcon,
   Text,
   Stack,
 } from '@chakra-ui/core'
@@ -32,7 +33,7 @@ export interface Item {
   value: string
 }
 
-export interface ChakraMultipleCreateProps<T extends Item> extends UseMultipleSelectionProps<T> {
+export interface CUIAutoCompleteProps<T extends Item> extends UseMultipleSelectionProps<T> {
   items: T[]
   placeholder: string
   label: string
@@ -40,26 +41,27 @@ export interface ChakraMultipleCreateProps<T extends Item> extends UseMultipleSe
   itemRenderer?: (item: T) => string
   emptyState?: (inputValue: string) => React.ReactNode
   optionFilterFunc?: (items: T[], inputValue: string) => T[]
-  inputStyleProps?: InputProps
-  inputIconStyleProps?: InputProps
-  tagStyleProps?: InputProps
-  selectedIconProps?: InputProps
-  menuStyleProps?: BoxProps
+  highlightItemBg?: string
   labelStyleProps?: FormLabelProps
-
+  inputStyleProps?: InputProps
+  inputIconStyleProps?: ButtonProps
+  tagStyleProps?: TagProps
+  listStyleProps?: PseudoBoxProps
+  selectedIconProps?: BoxProps
 
 }
 
-export const ChakraMultipleCreate = <T extends Item>(
-  props: ChakraMultipleCreateProps<T>
-): React.ReactElement<ChakraMultipleCreateProps<T>> => {
+export const CUIAutoComplete = <T extends Item>(
+  props: CUIAutoCompleteProps<T>
+): React.ReactElement<CUIAutoCompleteProps<T>> => {
   const {
     items,
     optionFilterFunc = defaultOptionFilterFunc,
     itemRenderer = defaultItemRenderer,
     placeholder,
+    highlightItemBg,
     label,
-    menuStyleProps,
+    listStyleProps,
     onCreateItem,
     ...downshiftProps
   } = props
@@ -181,9 +183,9 @@ export const ChakraMultipleCreate = <T extends Item>(
 
         {/* ---------Stack with Selected Menu Tags above the Input Box--------- */}
         {selectedItems &&
-          <Stack spacing={2} isInline>
+          <Stack spacing={2} isInline flexWrap="wrap">
             {selectedItems.map((selectedItem, index) => (
-              <Tag key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
+              <Tag mb={1} key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
                 <TagLabel>{selectedItem.label}</TagLabel>
                 <TagCloseButton
                   onClick={(e) => {
@@ -216,52 +218,68 @@ export const ChakraMultipleCreate = <T extends Item>(
 
 
         {/* -----------Section that renders the Menu Lists Component ----------------- */}
-        <List as="ul" {...menuStyleProps} {...getMenuProps()}>
-          {isOpen &&
-            inputItems.map((item, index) => (
-              <ListItem
-                className={cc({
-                  'p-2 text-sm bg-white border-b': true,
-                  'bg-gray-100':
-                    highlightedIndex === index
-                })}
-                key={`${item.value}${index}`}
-                {...getItemProps({ item, index })}
-              >
-                {isCreating ? (
-                  <Text>
-                    <Box as="span">Create</Box>{' '}
-                    <Box as="span">
-                      {item.label}
+        <Box pb={4} mb={4}>
+          <List
+            bg="white"
+            borderRadius="4px"
+            border={isOpen && "1px solid rgba(0,0,0,0.1)"}
+            boxShadow="6px 5px 8px rgba(0,50,30,0.02)"
+            {...listStyleProps} {...getMenuProps()}>
+            {isOpen &&
+              inputItems.map((item, index) => (
+                <ListItem
+                  px={2}
+                  py={1}
+                  borderBottom="1px solid rgba(0,0,0,0.01)"
+                  bg={highlightedIndex === index ? highlightItemBg : "inherit"}
+                  className={cc({
+                    'p-2 text-sm bg-white border-b': true,
+                    'bg-gray-100':
+                      highlightedIndex === index
+                  })}
+                  key={`${item.value}${index}`}
+                  {...getItemProps({ item, index })}
+                >
+                  {isCreating ? (
+                    <Text>
+                      <Box as="span">Create</Box>{' '}
+                      <Box as="span" bg="yellow.300" fontWeight="bold">
+                        "{item.label}"
                     </Box>
-                  </Text>
-                ) : (
-                    <div>
-                      {selectedItemValues.includes(
-                        item.value
-                      ) && (
-                          <ListIcon
-                            icon="check-circle" color="green.500"
-                            role='img'
-                            fontSize=".7rem"
-                            aria-label='Selected'
-                          />
-                        )}
-                      <Highlighter
-                        autoEscape
-                        searchWords={[inputValue || '']}
-                        textToHighlight={itemRenderer(
-                          item
-                        )}
-                      />
-                    </div>
-                  )}
-              </ListItem>
-            ))}
-        </List>
+                    </Text>
+                  ) : (
+                      <div>
+                        {selectedItemValues.includes(
+                          item.value
+                        ) && (
+                            <ListIcon
+                              icon="check-circle" color="green.500"
+                              role='img'
+                              aria-label='Selected'
+                            />
+                          )}
+
+                        <Highlighter
+                          autoEscape
+                          searchWords={[inputValue || '']}
+                          textToHighlight={itemRenderer(
+                            item
+                          )}
+                        />
+
+                      </div>
+                    )}
+                </ListItem>
+              ))}
+          </List>
+        </Box>
         {/* ----------- End Section that renders the Menu Lists Component ----------------- */}
 
       </Stack>
     </ThemeProvider>
   )
+}
+
+CUIAutoComplete.defaultProps = {
+  highlightItemBg: 'gray.100'
 }

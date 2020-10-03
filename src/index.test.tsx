@@ -1,7 +1,7 @@
-import { ChakraMultipleCreate } from '.'
+import { CUIAutoComplete } from '.'
 
-describe('ChakraMultipleCreate', () => {
-  it('is truthy', () => {
-    expect(ChakraMultipleCreate).toBeTruthy()
-  })
+describe('CUIAutoComplete', () => {
+    it('is truthy', () => {
+        expect(CUIAutoComplete).toBeTruthy()
+    })
 })
