@@ -6,7 +6,13 @@ import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
 import cc from 'classcat'
-import { usePopper } from 'react-popper'
+import {
+  Input, Button, List, ListItem, Text,
+  FormLabel, Box,
+  ThemeProvider,
+  InputProps, BoxProps,
+  FlexProps,
+} from '@chakra-ui/core'
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
@@ -15,6 +21,7 @@ function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
 function defaultItemRenderer<T extends Item>(selected: T) {
   return selected.label
 }
+
 
 export interface Item {
   label: string
@@ -27,7 +34,15 @@ export interface ChakraMultipleCreateProps<T extends Item> extends UseMultipleSe
   onCreateItem?: (item: T) => void
   itemRenderer?: (item: T) => string
   emptyState?: (inputValue: string) => React.ReactNode
-  optionFilterFunc?: (items: T[], inputValue: string) => T[]
+  optionFilterFunc?: (items: T[], inputValue: string) => T[],
+  inputStyleProps?: InputProps
+  inputIconStyleProps?: InputProps
+  tagStyleProps?: InputProps
+  selectedIconProps?: InputProps
+  menuTextStyleProps?: InputProps
+  inputLabelStyleProps?: BoxProps
+
+
 }
 
 export const ChakraMultipleCreate = <T extends Item>(
@@ -49,24 +64,6 @@ export const ChakraMultipleCreate = <T extends Item>(
 
   /* Refs */
   const disclosureRef = React.useRef(null)
-  const popoverRef = React.useRef(null)
-
-  /* use React Popper */
-  const { styles, attributes, forceUpdate } = usePopper(
-    disclosureRef.current,
-    popoverRef.current,
-    {
-      placement: 'bottom-start',
-      modifiers: [
-        {
-          name: 'offset',
-          options: {
-            offset: [0, 8]
-          }
-        }
-      ]
-    }
-  )
 
   const { getSelectedItemProps, getDropdownProps, addSelectedItem, removeSelectedItem, selectedItems } = useMultipleSelection(downshiftProps)
 
@@ -169,26 +166,21 @@ export const ChakraMultipleCreate = <T extends Item>(
     setInputItems(items)
   }, [items])
 
-  React.useEffect(() => {
-    if (selectedItems && forceUpdate) {
-      forceUpdate()
-    }
-  }, [selectedItems, forceUpdate])
 
   return (
-    <div>
-      <label {...getLabelProps({})}>
+    <ThemeProvider>
+      <FormLabel {...getLabelProps({})}>
         Choose some fruits:
-            </label>
+      </FormLabel>
       <div>
         <div>
           {selectedItems.map((selectedItem, index) => (
-            <span
+            <Box as="span"
               key={`selected-item-${index}`}
               {...getSelectedItemProps({ selectedItem, index })}
             >
               {selectedItem.label}
-              <button
+              <Button
                 onClick={(e) => {
                   e.stopPropagation()
                   removeSelectedItem(selectedItem)
@@ -197,12 +189,12 @@ export const ChakraMultipleCreate = <T extends Item>(
                 aria-label='Remove small badge'
               >
                 &#10005;
-              </button>
-            </span>
+              </Button>
+            </Box>
           ))}
         </div>
         <div {...getComboboxProps()}>
-          <input
+          <Input
             {...getInputProps(
               getDropdownProps({
                 placeholder,
@@ -213,18 +205,19 @@ export const ChakraMultipleCreate = <T extends Item>(
             )}
           />
           <div>
-            <button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </button>
+            <Button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </Button>
           </div>
         </div>
-        {/* <div
-          style={styles.popper}
-          {...attributes.popper}
-          {...getMenuProps({ ref: popoverRef, })}
-        > */}
-        <ul {...getMenuProps()}>
+        <Box as="ul"
+          {...getMenuProps()}>
           {isOpen &&
             inputItems.map((item, index) => (
               <li
+                style={{
+                  backgroundColor: 'red',
+                  fontWeight: 'bold'
+
+                }}
                 className={cc({
                   'p-2 text-sm bg-white border-b': true,
                   'bg-gray-100':
@@ -234,12 +227,12 @@ export const ChakraMultipleCreate = <T extends Item>(
                 {...getItemProps({ item, index })}
               >
                 {isCreating ? (
-                  <p>
-                    <span>Create</span>{' '}
-                    <span>
+                  <Text>
+                    <Box as="span">Create</Box>{' '}
+                    <Box as="span">
                       {item.label}
-                    </span>
-                  </p>
+                    </Box>
+                  </Text>
                 ) : (
                     <div>
                       {selectedItemValues.includes(
@@ -263,9 +256,8 @@ export const ChakraMultipleCreate = <T extends Item>(
                   )}
               </li>
             ))}
-        </ul>
-        {/* </div> */}
+        </Box>
       </div>
-    </div>
+    </ThemeProvider>
   )
 }

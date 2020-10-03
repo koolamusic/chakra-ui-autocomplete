@@ -26,7 +26,7 @@ class Example extends Component {
 
 ## Todo
 
-- [ ] Create Combobox Support
+- [ ] Add Combobox Support
 - [ ] Create Multi Select Support
 - [ ] Feature to Create when not in list
 - [ ] Create variation of Combobox, MultiSelect and MultiSelectCreate that is completely headless.
