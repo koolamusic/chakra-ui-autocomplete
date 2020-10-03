@@ -29,7 +29,7 @@ class Example extends Component {
 - [ ] Add Combobox Support
 - [ ] Create Multi Select Support
 - [ ] Feature to Create when not in list
-- [ ] Create variation of Combobox, MultiSelect and MultiSelectCreate that is completely headless.
+- [ ] An abstraction of Combobox, MultiSelect and MultiSelectCreate that is independent.
 
 ## License
 

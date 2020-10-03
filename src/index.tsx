@@ -7,11 +7,13 @@ import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
 import cc from 'classcat'
 import {
-  Input, Button, List, ListItem, Text,
+  Input, Button,
+  //  List, ListItem,
+  Text,
   FormLabel, Box,
   ThemeProvider,
-  InputProps, BoxProps,
-  FlexProps,
+  InputProps,
+  BoxProps,
 } from '@chakra-ui/core'
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
@@ -31,15 +33,16 @@ export interface Item {
 export interface ChakraMultipleCreateProps<T extends Item> extends UseMultipleSelectionProps<T> {
   items: T[]
   placeholder: string
+  label: string
   onCreateItem?: (item: T) => void
   itemRenderer?: (item: T) => string
   emptyState?: (inputValue: string) => React.ReactNode
-  optionFilterFunc?: (items: T[], inputValue: string) => T[],
+  optionFilterFunc?: (items: T[], inputValue: string) => T[]
   inputStyleProps?: InputProps
   inputIconStyleProps?: InputProps
   tagStyleProps?: InputProps
   selectedIconProps?: InputProps
-  menuTextStyleProps?: InputProps
+  menuStyleProps?: BoxProps
   inputLabelStyleProps?: BoxProps
 
 
@@ -53,6 +56,8 @@ export const ChakraMultipleCreate = <T extends Item>(
     optionFilterFunc = defaultOptionFilterFunc,
     itemRenderer = defaultItemRenderer,
     placeholder,
+    label,
+    menuStyleProps,
     onCreateItem,
     ...downshiftProps
   } = props
@@ -65,8 +70,8 @@ export const ChakraMultipleCreate = <T extends Item>(
   /* Refs */
   const disclosureRef = React.useRef(null)
 
+  /* Downshift Props */
   const { getSelectedItemProps, getDropdownProps, addSelectedItem, removeSelectedItem, selectedItems } = useMultipleSelection(downshiftProps)
-
   const selectedItemValues = selectedItems.map((item) => item.value)
 
   const {
@@ -169,9 +174,7 @@ export const ChakraMultipleCreate = <T extends Item>(
 
   return (
     <ThemeProvider>
-      <FormLabel {...getLabelProps({})}>
-        Choose some fruits:
-      </FormLabel>
+      <FormLabel {...getLabelProps({})}>{label}</FormLabel>
       <div>
         <div>
           {selectedItems.map((selectedItem, index) => (
@@ -208,16 +211,11 @@ export const ChakraMultipleCreate = <T extends Item>(
             <Button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </Button>
           </div>
         </div>
-        <Box as="ul"
-          {...getMenuProps()}>
+        <Box as="ul" {...menuStyleProps} {...getMenuProps()}>
           {isOpen &&
             inputItems.map((item, index) => (
               <li
-                style={{
-                  backgroundColor: 'red',
-                  fontWeight: 'bold'
 
-                }}
                 className={cc({
                   'p-2 text-sm bg-white border-b': true,
                   'bg-gray-100':

@@ -13,10 +13,13 @@ export interface Item {
 
 
 const fruits = [
-  { value: "apple", label: "Apple" },
-  { value: "banana", label: "Banana" },
-  { value: "mango", label: "Mango" },
-  { value: "kiwi", label: "Kiwi" }
+  { value: "ghana", label: "Ghana" },
+  { value: "nigeria", label: "Nigeria" },
+  { value: "kenya", label: "Kenya" },
+  { value: "southAfrica", label: "South Africa" },
+  { value: "unitedStates", label: "United States" },
+  { value: "canada", label: "Canada" },
+  { value: "germany", label: "Germany" }
 ];
 
 export default function App() {
@@ -41,7 +44,11 @@ export default function App() {
       <Flex justify="center" width="100%">
 
         <ChakraMultipleCreate
-          placeholder="Type name of fruit"
+          menuStyleProps={{
+            color: "#333"
+          }}
+          label="Choose your Home Country"
+          placeholder="Type a Country"
           onCreateItem={handleCreateItem}
           items={pickerItems}
           selectedItems={selectedItems}
