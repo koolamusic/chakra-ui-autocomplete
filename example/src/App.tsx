@@ -1,10 +1,7 @@
 import React from 'react'
 import { ThemeProvider, CSSReset, Flex } from '@chakra-ui/core'
+import { CUIAutoComplete } from 'chakra-ui-autocomplete'
 
-import { ChakraMultipleCreate } from 'chakra-ui-autocomplete'
-
-
-// import { CreateablePicker, Item } from "./CreateablePicker";
 
 export interface Item {
   label: string;
@@ -12,7 +9,7 @@ export interface Item {
 }
 
 
-const fruits = [
+const countries = [
   { value: "ghana", label: "Ghana" },
   { value: "nigeria", label: "Nigeria" },
   { value: "kenya", label: "Kenya" },
@@ -23,7 +20,7 @@ const fruits = [
 ];
 
 export default function App() {
-  const [pickerItems, setPickerItems] = React.useState(fruits);
+  const [pickerItems, setPickerItems] = React.useState(countries);
   const [selectedItems, setSelectedItems] = React.useState<Item[]>([]);
 
   const handleCreateItem = (item: Item) => {
@@ -41,13 +38,14 @@ export default function App() {
     <ThemeProvider>
       <CSSReset />
 
-      <Flex justify="center" width="100%">
+      <Flex flexWrap="wrap" px={6} pt={12} height="100vh" bg="rgba(247,250,252)" justify="center" maxW="800px" borderRight="1px solid #ddd" >
 
-        <ChakraMultipleCreate
-          menuStyleProps={{
-            color: "#333"
-          }}
-          label="Choose your Home Country"
+        <CUIAutoComplete
+          // menuStyleProps={{
+          //   fontWeight: "bold"
+
+          // }}
+          label="Choose preferred work locations"
           placeholder="Type a Country"
           onCreateItem={handleCreateItem}
           items={pickerItems}
