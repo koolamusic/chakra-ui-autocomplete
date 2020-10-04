@@ -1,7 +1,7 @@
-import { CUIAutoComplete } from '.'
+import { CUIAutoComplete } from './index'
 
 describe('CUIAutoComplete', () => {
-    it('is truthy', () => {
-        expect(CUIAutoComplete).toBeTruthy()
-    })
+  it('is truthy', () => {
+    expect(CUIAutoComplete).toBeTruthy()
+  })
 })
