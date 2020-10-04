@@ -16,7 +16,7 @@ npm install --save chakra-ui-autocomplete
 
 ## Usage
 
-Usage Example with TSX/Typescript
+- Usage Example with TSX/Typescript
 
 ```tsx
 import React from 'react'
@@ -68,7 +68,8 @@ export default function App() {
 ```
 
 ---
-Usage Example with JSX/Javascript
+
+- Usage Example with JSX/Javascript
 
 ```jsx
 import React from 'react'
@@ -113,6 +114,89 @@ export default function App() {
   );
 }
 ```
+
+- Usage Example with Custom Item Renderer
+
+```jsx
+import React from 'react'
+import { Text, Flex, Avatar } from '@chakra-ui/core'
+import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+
+
+const countries = [
+  { value: "ghana", label: "Ghana" },
+  { value: "nigeria", label: "Nigeria" },
+  { value: "kenya", label: "Kenya" },
+  { value: "southAfrica", label: "South Africa" },
+  { value: "unitedStates", label: "United States" },
+  { value: "canada", label: "Canada" },
+  { value: "germany", label: "Germany" }
+];
+
+export default function App() {
+  const [pickerItems, setPickerItems] = React.useState(countries);
+  const [selectedItems, setSelectedItems] = React.useState<>([]);
+
+  const handleCreateItem = (item) => {
+    setPickerItems((curr) => [...curr, item]);
+    setSelectedItems((curr) => [...curr, item]);
+  };
+
+  const handleSelectedItemsChange = (selectedItems) => {
+    if (selectedItems) {
+      setSelectedItems(selectedItems);
+    }
+  };
+
+  const customRender = (selected) => {
+    return (
+      <Flex flexDir="row" alignItems="center">
+        <Avatar mr={2} size="sm" name={selected.label} />
+        <Text>{selected.label}</Text>
+      </Flex>
+    )
+  }
+
+
+
+  return (
+          <CUIAutoComplete
+            tagStyleProps={{
+              rounded: 'full'
+            }}
+            label="Choose preferred work locations"
+            placeholder="Type a Country"
+            onCreateItem={handleCreateItem}
+            items={pickerItems}
+            itemRenderer={customRender}
+            selectedItems={selectedItems}
+            onSelectedItemsChange={(changes) =>
+              handleSelectedItemsChange(changes.selectedItems)
+            }
+          />
+  );
+}
+
+```
+
+## Props
+
+| Property               | Type     | Required | Decscription                                                                                                                                                     |
+| ---------------------- | -------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| items                  | Array    | Yes      | An array of the items to be selected within the input field                                                                                                      |
+| placeholder            | string   |          | The placeholder for the input field                                                                                                                              |
+| label                  | string   | Yes      | Input Form Label to describe the activity or process                                                                                                             |
+| highlightItemBg        | string   |          | For accessibility, you can define a custom color for the highlight color when user is typing also accept  props like `yellow.300` based on chakra theme provider |
+| onCreateItem           | Function | Yes      | Function to handle creating new Item                                                                                                                             |
+| optionFilterFunc       | Function | Yes      | You can define a custom Function to handle filter logic                                                                                                          |
+| itemRenderer           | Function |          | Custom Function that can either return a JSX Element or String, in order to control how the list items within the Dropdown is rendered                           |
+| labelStyleProps        | Object   |          | Custom style props based on chakra-ui for labels, Example `{{ bg: 'gray.100', pt: '4'}}                                                                          |
+| inputStyleProps        | Object   |          | Custom style props based on chakra-ui for input field, Example`{{ bg: 'gray.100', pt: '4'}}                                                                      |
+| toggleButtonStyleProps | Object   |          | Custom style props based on chakra-ui for toggle button, Example `{{ bg: 'gray.100', pt: '4'}}                                                                   |
+| tagStyleProps          | Object   |          | Custom style props based on chakra-ui for multi option tags, Example`{{ bg: 'gray.100', pt: '4'}}                                                                |
+| listStyleProps         | Object   |          | Custom style props based on chakra-ui for dropdown list, Example `{{ bg: 'gray.100', pt: '4'}}                                                                   |
+| listItemStyleProps     | Object   |          | Custom style props based on chakra-ui for single list item in dropdown, Example`{{ bg: 'gray.100', pt: '4'}}                                                     |
+| selectedIconProps      | Object   |          | Custom style props based on chakra-ui for the green tick icon in dropdown list, Example `{{ bg: 'gray.100', pt: '4'}}                                            |
 
 ## Todo
 
