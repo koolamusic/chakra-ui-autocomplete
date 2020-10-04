@@ -4,7 +4,7 @@
 
 [![NPM](https://img.shields.io/npm/v/chakra-ui-autocomplete.svg)](https://www.npmjs.com/package/chakra-ui-autocomplete) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
 
-![demo-image](./demo.gif)
+![demo-image](./img/basic.gif)
 
 ## Install
 
@@ -115,7 +115,10 @@ export default function App() {
 }
 ```
 
-- Usage Example with Custom Item Renderer
+### Usage Example with Custom Item Renderer
+
+![custom-render-image](./img/custom-example.gif)
+
 
 ```jsx
 import React from 'react'
