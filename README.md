@@ -138,7 +138,7 @@ const countries = [
 
 export default function App() {
   const [pickerItems, setPickerItems] = React.useState(countries);
-  const [selectedItems, setSelectedItems] = React.useState<>([]);
+  const [selectedItems, setSelectedItems] = React.useState([]);
 
   const handleCreateItem = (item) => {
     setPickerItems((curr) => [...curr, item]);
