@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable prettier/prettier */
 import * as React from 'react'
 import { useCombobox, useMultipleSelection, UseMultipleSelectionProps } from 'downshift'
@@ -16,13 +17,7 @@ import List, { ListItem, ListIcon } from '@chakra-ui/core/dist/List'
 import { IconProps } from '@chakra-ui/core/dist/Icon'
 import Tag, { TagCloseButton, TagLabel, TagProps } from '@chakra-ui/core/dist/Tag'
 
-function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
-  return matchSorter(items, inputValue, { keys: ['value', 'label'] })
-}
 
-function defaultItemRenderer<T extends Item>(selected: T) {
-  return selected.label
-}
 
 
 export interface Item {
@@ -38,7 +33,6 @@ export interface CUIAutoCompleteProps<T extends Item> extends UseMultipleSelecti
   onCreateItem?: (item: T) => void
   optionFilterFunc?: (items: T[], inputValue: string) => T[]
   itemRenderer?: (item: T) => string | JSX.Element
-  withItemRenderer?: boolean
   labelStyleProps?: FormLabelProps
   inputStyleProps?: InputProps
   toggleButtonStyleProps?: ButtonProps
@@ -49,6 +43,10 @@ export interface CUIAutoCompleteProps<T extends Item> extends UseMultipleSelecti
   selectedIconProps?: Omit<IconProps, "name"> & { icon: IconProps["name"] | React.ComponentType; }
 
 }
+function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
+  return matchSorter(items, inputValue, { keys: ['value', 'label'] })
+}
+
 
 export const CUIAutoComplete = <T extends Item>(
   props: CUIAutoCompleteProps<T>
@@ -67,7 +65,6 @@ export const CUIAutoComplete = <T extends Item>(
     tagStyleProps,
     selectedIconProps,
     listItemStyleProps,
-    withItemRenderer,
     onCreateItem,
     ...downshiftProps
   } = props
@@ -180,6 +177,11 @@ export const CUIAutoComplete = <T extends Item>(
   useDeepCompareEffect(() => {
     setInputItems(items)
   }, [items])
+
+  /* Default Items Renderer */
+  function defaultItemRenderer<T extends Item>(selected: T) {
+    return selected.label
+  }
 
 
   return (
