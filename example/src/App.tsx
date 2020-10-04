@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider, CSSReset, Flex, Heading } from '@chakra-ui/core'
+import { ThemeProvider, CSSReset, Text, Flex, Heading, Avatar } from '@chakra-ui/core'
 import { CUIAutoComplete } from 'chakra-ui-autocomplete'
 import theme from './theme'
 
@@ -33,6 +33,17 @@ export default function App() {
     }
   };
 
+  const customRender = <T extends Item>(selected: T) => {
+    return (
+      <Flex flexDir="row" alignItems="center">
+        <Avatar mr={2} size="sm" name={selected.label} />
+        <Text>{selected.label}</Text>
+      </Flex>
+    )
+  }
+
+
+
   return (
     <ThemeProvider theme={theme}>
       <CSSReset />
@@ -50,6 +61,24 @@ export default function App() {
             placeholder="Type a Country"
             onCreateItem={handleCreateItem}
             items={pickerItems}
+            selectedItems={selectedItems}
+            onSelectedItemsChange={(changes) =>
+              handleSelectedItemsChange(changes.selectedItems)
+            }
+          />
+
+
+          <Flex mt={6} />
+          <Heading mb={3} as="h1" size="md">Basic Example with Custom Renderer</Heading>
+          <CUIAutoComplete
+            tagStyleProps={{
+              rounded: 'full'
+            }}
+            label="Choose preferred work locations"
+            placeholder="Type a Country"
+            onCreateItem={handleCreateItem}
+            items={pickerItems}
+            itemRenderer={customRender}
             selectedItems={selectedItems}
             onSelectedItemsChange={(changes) =>
               handleSelectedItemsChange(changes.selectedItems)
