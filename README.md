@@ -1,9 +1,8 @@
 # Chakra-UI AutoComplete
 
-> An Accessible Autocomplete Utility for Chakra UI that composes Downshift ComboBox
+> An Accessible Autocomplete Utility for [Chakra UI](github.com/chakra-ui/chakra-ui) that composes [Downshift](https://github.com/downshift-js/downshift) ComboBox
 
 [![NPM](https://img.shields.io/npm/v/chakra-ui-autocomplete.svg)](https://www.npmjs.com/package/chakra-ui-autocomplete) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
 
 ![demo-image](./demo.gif)
 
