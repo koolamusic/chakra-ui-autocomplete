@@ -26,7 +26,6 @@
 	"peerDependencies": {
 		"react": "^16.0.0",
 		"@chakra-ui/core": "^0.8.0"
-
 	},
 	"devDependencies": {
 		"@emotion/core": "^10.0.35",
@@ -65,14 +64,14 @@
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-highlight-words": "^0.16.0",
-		"react-is": "^16.13.1",
-		"react-popper": "^2.2.3",
-		"classcat": "^4.1.0",
 		"react-scripts": "^3.4.1",
 		"react-use": "^15.3.4",
 		"typescript": "^3.7.5"
 	},
 	"files": [ "dist" ],
+	"publishConfig": {
+		"access": "public"
+	},
 	"keywords": [ "Chakra UI", "downshift", "autocomplete", "combobox", "react", "chakra-ui", "multiselect-chakra-ui" ],
 	"repository": {
 		"type": "git",

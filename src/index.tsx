@@ -4,7 +4,6 @@ import { useCombobox, useMultipleSelection, UseMultipleSelectionProps } from 'do
 import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
-import cc from 'classcat'
 import ThemeProvider from '@chakra-ui/core/dist/ThemeProvider'
 import FormLabel, { FormLabelProps } from '@chakra-ui/core/dist/FormLabel'
 import Tag, { TagCloseButton, TagLabel, TagProps } from '@chakra-ui/core/dist/Tag'
@@ -13,11 +12,7 @@ import Button, { ButtonProps } from '@chakra-ui/core/dist/Button'
 import { PseudoBoxProps } from '@chakra-ui/core/dist/PseudoBox'
 import Input, { InputProps } from '@chakra-ui/core/dist/Input'
 import List, { ListItem, ListIcon } from '@chakra-ui/core/dist/List'
-
-import {
-  Text,
-  Stack,
-} from '@chakra-ui/core'
+import { Text, Stack } from '@chakra-ui/core'
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
@@ -232,11 +227,6 @@ export const CUIAutoComplete = <T extends Item>(
                   py={1}
                   borderBottom="1px solid rgba(0,0,0,0.01)"
                   bg={highlightedIndex === index ? highlightItemBg : "inherit"}
-                  className={cc({
-                    'p-2 text-sm bg-white border-b': true,
-                    'bg-gray-100':
-                      highlightedIndex === index
-                  })}
                   key={`${item.value}${index}`}
                   {...getItemProps({ item, index })}
                 >
