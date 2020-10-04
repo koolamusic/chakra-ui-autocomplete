@@ -6,13 +6,15 @@ import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
 import ThemeProvider from '@chakra-ui/core/dist/ThemeProvider'
 import FormLabel, { FormLabelProps } from '@chakra-ui/core/dist/FormLabel'
-import Tag, { TagCloseButton, TagLabel, TagProps } from '@chakra-ui/core/dist/Tag'
-import Box, { BoxProps } from '@chakra-ui/core/dist/Box'
+import Text from '@chakra-ui/core/dist/Text'
+import Stack from '@chakra-ui/core/dist/Stack'
+import Box from '@chakra-ui/core/dist/Box'
 import Button, { ButtonProps } from '@chakra-ui/core/dist/Button'
 import { PseudoBoxProps } from '@chakra-ui/core/dist/PseudoBox'
 import Input, { InputProps } from '@chakra-ui/core/dist/Input'
 import List, { ListItem, ListIcon } from '@chakra-ui/core/dist/List'
-import { Text, Stack } from '@chakra-ui/core'
+import { IconProps } from '@chakra-ui/core/dist/Icon'
+import Tag, { TagCloseButton, TagLabel, TagProps } from '@chakra-ui/core/dist/Tag'
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
@@ -32,17 +34,19 @@ export interface CUIAutoCompleteProps<T extends Item> extends UseMultipleSelecti
   items: T[]
   placeholder: string
   label: string
-  onCreateItem?: (item: T) => void
-  itemRenderer?: (item: T) => string
-  emptyState?: (inputValue: string) => React.ReactNode
-  optionFilterFunc?: (items: T[], inputValue: string) => T[]
   highlightItemBg?: string
+  onCreateItem?: (item: T) => void
+  optionFilterFunc?: (items: T[], inputValue: string) => T[]
+  itemRenderer?: (item: T) => string | JSX.Element
+  withItemRenderer?: boolean
   labelStyleProps?: FormLabelProps
   inputStyleProps?: InputProps
-  inputIconStyleProps?: ButtonProps
+  toggleButtonStyleProps?: ButtonProps
   tagStyleProps?: TagProps
   listStyleProps?: PseudoBoxProps
-  selectedIconProps?: BoxProps
+  listItemStyleProps?: PseudoBoxProps
+  emptyState?: (inputValue: string) => React.ReactNode
+  selectedIconProps?: Omit<IconProps, "name"> & { icon: IconProps["name"] | React.ComponentType; }
 
 }
 
@@ -52,11 +56,18 @@ export const CUIAutoComplete = <T extends Item>(
   const {
     items,
     optionFilterFunc = defaultOptionFilterFunc,
-    itemRenderer = defaultItemRenderer,
+    itemRenderer,
+    highlightItemBg = 'gray.100',
     placeholder,
-    highlightItemBg,
     label,
     listStyleProps,
+    labelStyleProps,
+    inputStyleProps,
+    toggleButtonStyleProps,
+    tagStyleProps,
+    selectedIconProps,
+    listItemStyleProps,
+    withItemRenderer,
     onCreateItem,
     ...downshiftProps
   } = props
@@ -180,7 +191,7 @@ export const CUIAutoComplete = <T extends Item>(
         {selectedItems &&
           <Stack spacing={2} isInline flexWrap="wrap">
             {selectedItems.map((selectedItem, index) => (
-              <Tag mb={1} key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
+              <Tag mb={1} {...tagStyleProps} key={`selected-item-${index}`} {...getSelectedItemProps({ selectedItem, index })}>
                 <TagLabel>{selectedItem.label}</TagLabel>
                 <TagCloseButton
                   onClick={(e) => {
@@ -198,6 +209,7 @@ export const CUIAutoComplete = <T extends Item>(
         {/* -----------Section that renders the input element ----------------- */}
         <Stack isInline {...getComboboxProps()}>
           <Input
+            {...inputStyleProps}
             {...getInputProps(
               getDropdownProps({
                 placeholder,
@@ -207,7 +219,7 @@ export const CUIAutoComplete = <T extends Item>(
               })
             )}
           />
-          <Button {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </Button>
+          <Button {...toggleButtonStyleProps} {...getToggleButtonProps()} aria-label='toggle menu'> &#8595; </Button>
         </Stack>
         {/* -----------Section that renders the input element ----------------- */}
 
@@ -226,6 +238,7 @@ export const CUIAutoComplete = <T extends Item>(
                   px={2}
                   py={1}
                   borderBottom="1px solid rgba(0,0,0,0.01)"
+                  {...listItemStyleProps}
                   bg={highlightedIndex === index ? highlightItemBg : "inherit"}
                   key={`${item.value}${index}`}
                   {...getItemProps({ item, index })}
@@ -238,26 +251,30 @@ export const CUIAutoComplete = <T extends Item>(
                     </Box>
                     </Text>
                   ) : (
-                      <div>
+                      <Box display="inline-flex" alignItems="center">
                         {selectedItemValues.includes(
                           item.value
                         ) && (
                             <ListIcon
                               icon="check-circle" color="green.500"
                               role='img'
+                              display="inline"
                               aria-label='Selected'
+                              {...selectedIconProps}
                             />
                           )}
 
-                        <Highlighter
-                          autoEscape
-                          searchWords={[inputValue || '']}
-                          textToHighlight={itemRenderer(
-                            item
-                          )}
-                        />
+                        {itemRenderer ? itemRenderer(item) :
+                          <Highlighter
+                            autoEscape
+                            searchWords={[inputValue || '']}
+                            textToHighlight={defaultItemRenderer(
+                              item
+                            )}
+                          />
+                        }
 
-                      </div>
+                      </Box>
                     )}
                 </ListItem>
               ))}
@@ -268,8 +285,4 @@ export const CUIAutoComplete = <T extends Item>(
       </Stack>
     </ThemeProvider>
   )
-}
-
-CUIAutoComplete.defaultProps = {
-  highlightItemBg: 'gray.100'
 }

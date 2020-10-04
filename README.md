@@ -119,6 +119,7 @@ export default function App() {
 - [ ] Add Combobox Support for Single Select [Downshift Combobox](https://downshift.netlify.app/use-combobox)
 - [x] Multi Select Support
 - [x] Feature to Create when not in list
+- [x] Add prop for Items Renderer to enable rendering of React Element
 - [ ] Ability to define `chakra-ui components` that will render in place of `Tags, MenuList, TextInput, Form Label` will check render props or headless UI patterns.
 
 ## License
