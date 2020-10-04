@@ -1,7 +1,7 @@
 import React from 'react'
-import { ThemeProvider, CSSReset, Flex } from '@chakra-ui/core'
-import theme from './theme'
+import { ThemeProvider, CSSReset, Flex, Heading } from '@chakra-ui/core'
 import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import theme from './theme'
 
 
 export interface Item {
@@ -37,22 +37,27 @@ export default function App() {
     <ThemeProvider theme={theme}>
       <CSSReset />
 
-      <Flex flexWrap="wrap" px={6} pt={12} height="100vh" bg="rgba(247,250,252)" justify="center" maxW="800px" borderRight="1px solid #ddd" >
+      <Flex flexWrap="wrap" px={6} pt={12} height="100vh" bg="rgba(247,250,252)" justify="center" borderRight="1px solid #ddd" >
 
-        <CUIAutoComplete
-          // menuStyleProps={{
-          //   fontWeight: "bold"
+        <Flex minW="25rem" w="25rem" flexDirection="column">
+          <Heading mb={3} as="h1" size="md">Basic Example with Style Props</Heading>
 
-          // }}
-          label="Choose preferred work locations"
-          placeholder="Type a Country"
-          onCreateItem={handleCreateItem}
-          items={pickerItems}
-          selectedItems={selectedItems}
-          onSelectedItemsChange={(changes) =>
-            handleSelectedItemsChange(changes.selectedItems)
-          }
-        />
+          <CUIAutoComplete
+            tagStyleProps={{
+              rounded: 'full'
+            }}
+            label="Choose preferred work locations"
+            placeholder="Type a Country"
+            onCreateItem={handleCreateItem}
+            items={pickerItems}
+            selectedItems={selectedItems}
+            onSelectedItemsChange={(changes) =>
+              handleSelectedItemsChange(changes.selectedItems)
+            }
+          />
+
+        </Flex>
+
 
       </Flex>
     </ThemeProvider >
