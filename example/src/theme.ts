@@ -1,7 +1,5 @@
 import { theme as chakraTheme, DefaultTheme } from '@chakra-ui/core';
 
-type TBreakPoint = Array<string>;
-
 const fonts = {
 	...chakraTheme.fonts,
 	mono: `'Menlo', Monaco, Fira Code, Ubuntu Mono, monospace`,
@@ -30,7 +28,7 @@ const colors = {
 	background: '#F7FAFC',
 	altBackground: '#fafffd'
 };
-const breakpoints: TBreakPoint = [ '40em', '52em', '64em' ];
+const breakpoints = [ '40em', '52em', '64em' ];
 
 const theme: DefaultTheme = {
 	...chakraTheme,
