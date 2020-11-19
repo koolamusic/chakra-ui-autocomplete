@@ -4,18 +4,32 @@ import { useCombobox, useMultipleSelection, UseMultipleSelectionProps } from 'do
 import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
-import ThemeProvider from '@chakra-ui/core/dist/ThemeProvider'
-import FormLabel, { FormLabelProps } from '@chakra-ui/core/dist/FormLabel'
-import Text from '@chakra-ui/core/dist/Text'
-import Stack from '@chakra-ui/core/dist/Stack'
-import Box from '@chakra-ui/core/dist/Box'
-import Button, { ButtonProps } from '@chakra-ui/core/dist/Button'
-import { PseudoBoxProps } from '@chakra-ui/core/dist/PseudoBox'
-import Input, { InputProps } from '@chakra-ui/core/dist/Input'
-import List, { ListItem, ListIcon } from '@chakra-ui/core/dist/List'
-import { IconProps } from '@chakra-ui/core/dist/Icon'
-import Tag, { TagCloseButton, TagLabel, TagProps } from '@chakra-ui/core/dist/Tag'
+import { BoxProps, ThemeProvider } from '@chakra-ui/core/'
+import { FormLabel } from '@chakra-ui/core'
+import { Text } from '@chakra-ui/core'
+import { Stack } from '@chakra-ui/core'
+import { Box } from '@chakra-ui/core'
+import { Button, ButtonProps } from '@chakra-ui/core'
+import { Input, InputProps } from '@chakra-ui/core'
+import { List, ListItem, ListIcon } from '@chakra-ui/core/'
+import { IconProps } from '@chakra-ui/core'
+import { Tag, TagCloseButton, TagLabel, TagProps } from '@chakra-ui/core'
 
+
+interface ILabelProps {
+  isInvalid?: boolean;
+  /**
+   * This prop is read from the `FormControl` context but can be passed as well.
+   * If passed, it'll override the context and give the `label` look disabled
+   */
+  isDisabled?: boolean;
+  children: React.ReactNode;
+}
+
+
+export type FormLabelProps = ILabelProps &
+  BoxProps &
+  React.LabelHTMLAttributes<any>;
 
 
 
@@ -36,8 +50,8 @@ export interface CUIAutoCompleteProps<T extends Item> extends UseMultipleSelecti
   inputStyleProps?: InputProps
   toggleButtonStyleProps?: ButtonProps
   tagStyleProps?: TagProps
-  listStyleProps?: PseudoBoxProps
-  listItemStyleProps?: PseudoBoxProps
+  listStyleProps?: BoxProps
+  listItemStyleProps?: BoxProps
   emptyState?: (inputValue: string) => React.ReactNode
   selectedIconProps?: Omit<IconProps, "name"> & { icon: IconProps["name"] | React.ComponentType; }
 
