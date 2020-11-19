@@ -14,7 +14,8 @@
 	"scripts": {
 		"start": "tsdx watch",
 		"build": "rimraf dist && tsdx build",
-		"test": "tsdx test",
+		"test": "tsc --pretty --noEmit",
+		"test:tsdx": "tsdx test",
 		"prepare": "run-s build",
 		"test:build": "run-s build",
 		"test:lint": "eslint ./src --ext ts --ext tsx --fix",
