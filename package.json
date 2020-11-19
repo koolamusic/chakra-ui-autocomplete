@@ -1,6 +1,6 @@
 {
 	"name": "chakra-ui-autocomplete",
-	"version": "1.1.1",
+	"version": "1.1.2",
 	"description": "An autocomplete utility library for chakra UI",
 	"author": "Andrew Miracle <me@andrewmiracle.com>",
 	"license": "MIT",
@@ -41,6 +41,7 @@
 		"@types/react": "^16.9.27",
 		"@types/react-dom": "^16.9.7",
 		"@types/react-highlight-words": "^0.16.1",
+		"@types/react-test-renderer": "^16.9.3",
 		"@typescript-eslint/eslint-plugin": "^2.26.0",
 		"@typescript-eslint/parser": "^2.26.0",
 		"cross-env": "^7.0.2",
@@ -56,7 +57,6 @@
 		"match-sorter": "^4.2.1",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.0.4",
-		"@types/react-test-renderer": "^16.9.3",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-highlight-words": "^0.16.0",
