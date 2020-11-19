@@ -287,7 +287,7 @@ export const CUIAutoComplete = <T extends Item>(
                   key={`${item.value}${index}`}
                   {...getItemProps({ item, index })}
                 >
-                  {isCreating ? (
+                  {(isCreating && onCreateItem) ? (
                     <Text>
                       <Box as='span'>Create</Box>{' '}
                       <Box as='span' bg='yellow.300' fontWeight='bold'>
