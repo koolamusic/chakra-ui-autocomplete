@@ -1,6 +1,6 @@
 {
 	"name": "chakra-ui-autocomplete",
-	"version": "1.1.2",
+	"version": "1.1.3",
 	"description": "An autocomplete utility library for chakra UI",
 	"author": "Andrew Miracle <me@andrewmiracle.com>",
 	"license": "MIT",
@@ -87,7 +87,7 @@
 	},
 	"dependencies": {
 		"downshift": "^6.0.6",
-    "react-highlight-words": "^0.16.0",
+		"react-highlight-words": "^0.16.0",
 		"react-use": "^15.3.4"
 	}
 }
