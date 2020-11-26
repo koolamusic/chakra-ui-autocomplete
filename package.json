@@ -1,7 +1,7 @@
 {
 	"name": "chakra-ui-autocomplete",
 	"version": "1.1.4",
-	"description": "An autocomplete utility library for chakra UI",
+	"description": "An accessible autocomplete utility library built for chakra UI",
 	"author": "Andrew Miracle <me@andrewmiracle.com>",
 	"license": "MIT",
 	"main": "dist/index.js",
@@ -14,8 +14,8 @@
 	"scripts": {
 		"start": "tsdx watch",
 		"build": "rimraf dist && tsdx build",
-		"test": "tsc --pretty --noEmit",
-		"test:tsdx": "tsdx test",
+		"test": "tsdx test",
+		"test:tsc": "tsc --pretty --noEmit",
 		"prepare": "run-s build",
 		"test:build": "run-s build",
 		"test:lint": "eslint ./src --ext ts --ext tsx --fix",
@@ -25,11 +25,12 @@
 		"deploy": "gh-pages -d example/build"
 	},
 	"peerDependencies": {
-		"@chakra-ui/core": "^0.8.0",
+		"@chakra-ui/core": "^1.0.0-rc.8",
+		"framer-motion": "^2.9.4",
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
-		"@chakra-ui/core": "^0.8.0",
+		"@chakra-ui/core": "^1.0.0-rc.8",
 		"@emotion/react": "^11.1.1",
 		"@emotion/styled": "^11.0.0",
 		"@testing-library/jest-dom": "^4.2.4",
@@ -45,7 +46,6 @@
 		"@typescript-eslint/eslint-plugin": "^2.26.0",
 		"@typescript-eslint/parser": "^2.26.0",
 		"cross-env": "^7.0.2",
-		"emotion-theming": "^10.0.27",
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.7.0",
 		"eslint-config-standard": "^14.1.0",
@@ -53,6 +53,7 @@
 		"eslint-plugin-node": "^11.0.0",
 		"eslint-plugin-prettier": "^3.1.1",
 		"eslint-plugin-react": "^7.17.0",
+		"framer-motion": "^2.9.4",
 		"gh-pages": "^2.2.0",
 		"match-sorter": "^4.2.1",
 		"npm-run-all": "^4.1.5",
