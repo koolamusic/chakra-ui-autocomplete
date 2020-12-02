@@ -2,7 +2,7 @@ import { CUIAutoComplete } from './index'
 
 import React from 'react'
 import renderer from 'react-test-renderer'
-import { Text, Flex, Heading, Avatar } from '@chakra-ui/core'
+import { Text, Flex, Heading, Avatar } from '@chakra-ui/react'
 
 export interface Item {
   label: string

@@ -25,12 +25,12 @@
 		"deploy": "gh-pages -d example/build"
 	},
 	"peerDependencies": {
-		"@chakra-ui/core": "^1.0.0-rc.8",
+		"@chakra-ui/react": "^1.0.0",
 		"framer-motion": "^2.9.4",
 		"react": "^16.0.0"
 	},
 	"devDependencies": {
-		"@chakra-ui/core": "^1.0.0-rc.8",
+		"@chakra-ui/react": "^1.0.1",
 		"@emotion/react": "^11.1.1",
 		"@emotion/styled": "^11.0.0",
 		"@testing-library/jest-dom": "^4.2.4",
@@ -65,6 +65,9 @@
 		"rimraf": "^3.0.2",
 		"tsdx": "^0.14.1",
 		"tslib": "^2.0.3",
+		"downshift": "^6.0.6",
+		"react-highlight-words": "^0.16.0",
+		"react-use": "^15.3.4",
 		"typescript": "^3.7.5"
 	},
 	"files": [
@@ -87,8 +90,5 @@
 		"url": "git+https://github.com/koolamusic/chakra-ui-autocomplete.git"
 	},
 	"dependencies": {
-		"downshift": "^6.0.6",
-		"react-highlight-words": "^0.16.0",
-		"react-use": "^15.3.4"
 	}
 }

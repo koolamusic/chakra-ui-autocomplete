@@ -11,7 +11,7 @@ import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
 import { FormLabel, FormLabelProps } from '@chakra-ui/form-control'
 import { Text, Stack, Box, BoxProps, List, ListItem, ListIcon } from '@chakra-ui/layout'
 import { Button, ButtonProps } from '@chakra-ui/button'
-import { Input, InputProps } from '@chakra-ui/core'
+import { Input, InputProps } from '@chakra-ui/input'
 import { IconProps } from '@chakra-ui/icon'
 import { Tag, TagCloseButton, TagLabel, TagProps } from '@chakra-ui/tag'
 

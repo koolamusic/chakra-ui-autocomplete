@@ -1,5 +1,5 @@
 import React from 'react'
-import { ThemeProvider, CSSReset, Text, Flex, Heading, Avatar } from '@chakra-ui/core'
+import { ThemeProvider, CSSReset, Text, Flex, Heading, Avatar } from '@chakra-ui/react'
 import { CUIAutoComplete } from '../../dist'
 import theme from './theme'
 

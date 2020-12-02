@@ -122,7 +122,7 @@ export default function App() {
 
 ```jsx
 import React from 'react'
-import { Text, Flex, Avatar } from '@chakra-ui/core'
+import { Text, Flex, Avatar } from '@chakra-ui/react'
 import { CUIAutoComplete } from 'chakra-ui-autocomplete'
 
 
