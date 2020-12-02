@@ -1,6 +1,6 @@
 {
 	"name": "chakra-ui-autocomplete",
-	"version": "1.2.0",
+	"version": "1.2.1",
 	"description": "An accessible autocomplete utility library built for chakra UI",
 	"author": "Andrew Miracle <me@andrewmiracle.com>",
 	"license": "MIT",
@@ -46,6 +46,7 @@
 		"@typescript-eslint/eslint-plugin": "^2.26.0",
 		"@typescript-eslint/parser": "^2.26.0",
 		"cross-env": "^7.0.2",
+		"downshift": "^6.0.6",
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.7.0",
 		"eslint-config-standard": "^14.1.0",
@@ -60,14 +61,13 @@
 		"prettier": "^2.0.4",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
+		"react-highlight-words": "^0.16.0",
 		"react-scripts": "^3.4.1",
 		"react-test-renderer": "^17.0.1",
+		"react-use": "^15.3.4",
 		"rimraf": "^3.0.2",
 		"tsdx": "^0.14.1",
 		"tslib": "^2.0.3",
-		"downshift": "^6.0.6",
-		"react-highlight-words": "^0.16.0",
-		"react-use": "^15.3.4",
 		"typescript": "^3.7.5"
 	},
 	"files": [
@@ -89,6 +89,5 @@
 		"type": "git",
 		"url": "git+https://github.com/koolamusic/chakra-ui-autocomplete.git"
 	},
-	"dependencies": {
-	}
+	"dependencies": {}
 }
