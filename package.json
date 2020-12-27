@@ -59,7 +59,6 @@
 		"prettier": "^2.0.4",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
-		"react-highlight-words": "^0.16.0",
 		"react-scripts": "^3.4.1",
 		"react-test-renderer": "^17.0.1",
 		"rimraf": "^3.0.2",
@@ -89,6 +88,7 @@
 	"dependencies": {
 		"downshift": "^6.0.6",
 		"match-sorter": "^4.2.1",
+    "react-highlight-words": "^0.16.0",
 		"react-use": "^15.3.4"
 	}
 }
