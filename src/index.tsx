@@ -12,8 +12,9 @@ import { FormLabel, FormLabelProps } from '@chakra-ui/form-control'
 import { Text, Stack, Box, BoxProps, List, ListItem, ListIcon } from '@chakra-ui/layout'
 import { Button, ButtonProps } from '@chakra-ui/button'
 import { Input, InputProps } from '@chakra-ui/input'
-import { IconProps } from '@chakra-ui/icon'
+import { IconProps, CheckCircleIcon } from '@chakra-ui/icons'
 import { Tag, TagCloseButton, TagLabel, TagProps } from '@chakra-ui/tag'
+import { ComponentWithAs } from '@chakra-ui/react'
 
 export interface Item {
   label: string
@@ -39,7 +40,9 @@ export interface CUIAutoCompleteProps<T extends Item>
   selectedIconProps?: Omit<IconProps, 'name'> & {
     icon: IconProps['name'] | React.ComponentType
   }
+  icon?: ComponentWithAs<"svg", IconProps>;
 }
+
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
 }
@@ -62,6 +65,7 @@ export const CUIAutoComplete = <T extends Item>(
     selectedIconProps,
     listItemStyleProps,
     onCreateItem,
+    icon,
     ...downshiftProps
   } = props
 
@@ -269,7 +273,7 @@ export const CUIAutoComplete = <T extends Item>(
                     <Box display='inline-flex' alignItems='center'>
                       {selectedItemValues.includes(item.value) && (
                         <ListIcon
-                          icon='check-circle'
+                          as={icon || CheckCircleIcon}
                           color='green.500'
                           role='img'
                           display='inline'
