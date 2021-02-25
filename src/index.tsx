@@ -12,7 +12,7 @@ import { FormLabel, FormLabelProps } from '@chakra-ui/form-control'
 import { Text, Stack, Box, BoxProps, List, ListItem, ListIcon } from '@chakra-ui/layout'
 import { Button, ButtonProps } from '@chakra-ui/button'
 import { Input, InputProps } from '@chakra-ui/input'
-import { IconProps, CheckCircleIcon } from '@chakra-ui/icons'
+import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import { Tag, TagCloseButton, TagLabel, TagProps } from '@chakra-ui/tag'
 import { ComponentWithAs } from '@chakra-ui/react'
 
@@ -235,8 +235,7 @@ export const CUIAutoComplete = <T extends Item>(
           {...getToggleButtonProps()}
           aria-label='toggle menu'
         >
-          {' '}
-          &#8595;{' '}
+          <ArrowDownIcon />
         </Button>
       </Stack>
       {/* -----------Section that renders the input element ----------------- */}
