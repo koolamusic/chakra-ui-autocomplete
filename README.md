@@ -71,8 +71,6 @@ export default function App() {
 
 - Usage Example with JSX/Javascript
 
-[View on CodeSandbox](https://codesandbox.io/s/chakra-ui-autocomplete-example1-8uxbs)
-
 ```jsx
 import React from 'react'
 import { CUIAutoComplete } from 'chakra-ui-autocomplete'
@@ -116,6 +114,9 @@ export default function App() {
   );
 }
 ```
+
+[View on CodeSandbox](https://codesandbox.io/s/chakra-ui-autocomplete-example1-8uxbs)
+[![109296467-3cdbe100-7828-11eb-9491-1bd069bf90a4](https://user-images.githubusercontent.com/587136/109479134-1922d000-7aa0-11eb-9a7f-14d3a5f0d63d.png)](https://codesandbox.io/s/chakra-ui-autocomplete-example1-8uxbs)
 
 ### Usage Example with Custom Item Renderer
 
