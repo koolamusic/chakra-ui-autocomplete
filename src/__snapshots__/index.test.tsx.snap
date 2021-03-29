@@ -16,7 +16,7 @@ exports[`ChakraUI AutoComplete  it renders 1`] = `
       className="chakra-stack css-1pifhv5"
     >
       <label
-        className="chakra-form__label css-uvho5g"
+        className="chakra-form__label css-1l2u59i"
         htmlFor="downshift-0-input"
         id="downshift-0-label"
       >

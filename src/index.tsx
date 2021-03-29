@@ -191,7 +191,7 @@ export const CUIAutoComplete = <T extends Item>(
 
   return (
     <Stack>
-      <FormLabel {...getLabelProps({})}>{label}</FormLabel>
+      <FormLabel {...{...labelStyleProps, ...getLabelProps({})}}>{label}</FormLabel>
 
       {/* ---------Stack with Selected Menu Tags above the Input Box--------- */}
       {selectedItems && (

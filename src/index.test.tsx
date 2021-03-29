@@ -61,6 +61,9 @@ export default function MultiSelect() {
           tagStyleProps={{
             rounded: 'full'
           }}
+          labelStyleProps={{
+            color: 'rebeccapurple'
+          }}
           label='Choose preferred work locations'
           placeholder='Type a Country'
           onCreateItem={handleCreateItem}
