@@ -40,7 +40,8 @@ export interface CUIAutoCompleteProps<T extends Item>
   selectedIconProps?: Omit<IconProps, 'name'> & {
     icon: IconProps['name'] | React.ComponentType
   }
-  icon?: ComponentWithAs<"svg", IconProps>;
+  icon?: ComponentWithAs<"svg", IconProps>
+  hideToggleButton?: boolean
 }
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
@@ -66,6 +67,7 @@ export const CUIAutoComplete = <T extends Item>(
     listItemStyleProps,
     onCreateItem,
     icon,
+    hideToggleButton = false,
     ...downshiftProps
   } = props
 
@@ -230,13 +232,15 @@ export const CUIAutoComplete = <T extends Item>(
             })
           )}
         />
-        <Button
-          {...toggleButtonStyleProps}
-          {...getToggleButtonProps()}
-          aria-label='toggle menu'
-        >
-          <ArrowDownIcon />
-        </Button>
+        {hideToggleButton && (
+          <Button
+            {...toggleButtonStyleProps}
+            {...getToggleButtonProps()}
+            aria-label='toggle menu'
+          >
+            <ArrowDownIcon />
+          </Button>
+        )}
       </Stack>
       {/* -----------Section that renders the input element ----------------- */}
 
