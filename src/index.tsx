@@ -232,7 +232,7 @@ export const CUIAutoComplete = <T extends Item>(
             })
           )}
         />
-        {hideToggleButton && (
+        {!hideToggleButton && (
           <Button
             {...toggleButtonStyleProps}
             {...getToggleButtonProps()}
