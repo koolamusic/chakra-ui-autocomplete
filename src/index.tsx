@@ -49,6 +49,17 @@ function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
 }
 
+function defaultCreateItemRenderer(value: string) {
+  return (
+    <Text>
+      <Box as='span'>Create</Box>{' '}
+      <Box as='span' bg='yellow.300' fontWeight='bold'>
+        "{value}"
+      </Box>
+    </Text>
+  )
+} 
+
 export const CUIAutoComplete = <T extends Item>(
   props: CUIAutoCompleteProps<T>
 ): React.ReactElement<CUIAutoCompleteProps<T>> => {
@@ -69,14 +80,7 @@ export const CUIAutoComplete = <T extends Item>(
     onCreateItem,
     icon,
     disableCreateItem = false,
-    createItemRenderer = (value) => (
-      <Text>
-        <Box as='span'>Create</Box>{' '}
-        <Box as='span' bg='yellow.300' fontWeight='bold'>
-          "{value}"
-        </Box>
-      </Text>
-    ),
+    createItemRenderer = defaultCreateItemRenderer,
     ...downshiftProps
   } = props
 
