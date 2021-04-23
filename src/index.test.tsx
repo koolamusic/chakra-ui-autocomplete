@@ -1,4 +1,4 @@
-import { CUIAutoComplete } from './index'
+import { CUIMultipleAutoComplete } from './index'
 
 import React from 'react'
 import renderer from 'react-test-renderer'
@@ -54,10 +54,10 @@ export default function MultiSelect() {
     >
       <Flex minW='25rem' w='25rem' flexDirection='column'>
         <Heading mb={3} as='h1' size='md'>
-          Basic Example with Style Props
+          Basic Multiple Example with Style Props
         </Heading>
 
-        <CUIAutoComplete
+        <CUIMultipleAutoComplete
           tagStyleProps={{
             rounded: 'full'
           }}
@@ -76,9 +76,9 @@ export default function MultiSelect() {
 
         <Flex mt={6} />
         <Heading mb={3} as='h1' size='md'>
-          Basic Example with Custom Renderer
+          Basic Multiple Example with Custom Renderer
         </Heading>
-        <CUIAutoComplete
+        <CUIMultipleAutoComplete
           tagStyleProps={{
             rounded: 'full'
           }}

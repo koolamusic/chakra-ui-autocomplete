@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider, CSSReset, Text, Flex, Heading, Avatar } from '@chakra-ui/react'
-import { CUIAutoComplete } from '../../dist'
+import { CUIMultipleAutoComplete } from '../../dist'
 import theme from './theme'
 
 
@@ -51,9 +51,9 @@ export default function App() {
       <Flex flexWrap="wrap" px={6} pt={12} height="100vh" bg="rgba(247,250,252)" justify="center" borderRight="1px solid #ddd" >
 
         <Flex minW="25rem" w="25rem" flexDirection="column">
-          <Heading mb={3} as="h1" size="md">Basic Example with Style Props</Heading>
+          <Heading mb={3} as="h1" size="md">Basic Multiple Example with Style Props</Heading>
 
-          <CUIAutoComplete
+          <CUIMultipleAutoComplete
             tagStyleProps={{
               rounded: 'full'
             }}
@@ -69,8 +69,8 @@ export default function App() {
 
 
           <Flex mt={6} />
-          <Heading mb={3} as="h1" size="md">Basic Example with Custom Renderer</Heading>
-          <CUIAutoComplete
+          <Heading mb={3} as="h1" size="md">Basic Multiple Example with Custom Renderer</Heading>
+          <CUIMultipleAutoComplete
             tagStyleProps={{
               rounded: 'full'
             }}
