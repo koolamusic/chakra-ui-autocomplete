@@ -61,14 +61,12 @@ export const CUIAutoComplete = <T extends Item>(
     onCreateItem,
     icon,
     hideToggleButton = false,
-    ...rest
+    ...downshiftProps
   } = props
-
-  const downshiftProps = React.useMemo<UseComboboxProps<T>>(() => ({ ...rest, items }), [rest, items])
 
   /* States */
   const [isCreating, setIsCreating] = React.useState(false)
-const [inputValue, setInputValue] = React.useState('')
+  const [inputValue, setInputValue] = React.useState('')
   const [inputItems, setInputItems] = React.useState<T[]>(items)
 
   /* Refs */
