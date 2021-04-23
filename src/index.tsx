@@ -41,6 +41,7 @@ export interface CUIAutoCompleteProps<T extends Item>
     icon: IconProps['name'] | React.ComponentType
   }
   icon?: ComponentWithAs<"svg", IconProps>
+  hideToggleButton?: boolean
   createItemRenderer?: (value: string) => string | JSX.Element
   disableCreateItem?: boolean
 }
@@ -79,6 +80,7 @@ export const CUIAutoComplete = <T extends Item>(
     listItemStyleProps,
     onCreateItem,
     icon,
+    hideToggleButton = false,
     disableCreateItem = false,
     createItemRenderer = defaultCreateItemRenderer,
     ...downshiftProps
@@ -245,13 +247,15 @@ export const CUIAutoComplete = <T extends Item>(
             })
           )}
         />
-        <Button
-          {...toggleButtonStyleProps}
-          {...getToggleButtonProps()}
-          aria-label='toggle menu'
-        >
-          <ArrowDownIcon />
-        </Button>
+        {!hideToggleButton && (
+          <Button
+            {...toggleButtonStyleProps}
+            {...getToggleButtonProps()}
+            aria-label='toggle menu'
+          >
+            <ArrowDownIcon />
+          </Button>
+        )}
       </Stack>
       {/* -----------Section that renders the input element ----------------- */}
 

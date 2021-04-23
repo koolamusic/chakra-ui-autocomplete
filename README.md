@@ -204,6 +204,7 @@ export default function App() {
 | listItemStyleProps     | Object   |          | Custom style props based on chakra-ui for single list item in dropdown, Example`{{ bg: 'gray.100', pt: '4'}}                                                     |
 | selectedIconProps      | Object   |          | Custom style props based on chakra-ui for the green tick icon in dropdown list, Example `{{ bg: 'gray.100', pt: '4'}}                                            |
 | icon      | Object   |   CheckCircleIcon       | @chakra-ui/icons Icon to be displayed instead of CheckCircleIcon                                            |
+| hideToggleButton      | boolean   |          | Hide the toggle button                                         |
 | disableCreateItem      | Object   |          | Disable the "create new"  list Item. Default is `false`                                             |
 | createItemRenderer      | Function   |          | Custom Function that can either return a JSX Element or String, in order to control how the create new item within the Dropdown is rendered. The input value is passed as the first function parameter, Example: ``` (value) => `Create ${value}` ```                                            |
 
