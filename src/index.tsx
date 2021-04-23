@@ -1,7 +1,9 @@
 import { CUIAutoComplete } from "./CUIAutoComplete"
-import { CUIMultipleAutoComplete } from "./CUIMultipleAutoComplete"
+import { CUIMultipleAutoComplete, Item } from "./CUIMultipleAutoComplete"
 
 export {
   CUIAutoComplete,
-  CUIMultipleAutoComplete
+  CUIMultipleAutoComplete,
 }
+
+export type { Item }
