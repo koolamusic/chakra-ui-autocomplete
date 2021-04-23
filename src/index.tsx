@@ -40,7 +40,9 @@ export interface CUIAutoCompleteProps<T extends Item>
   selectedIconProps?: Omit<IconProps, 'name'> & {
     icon: IconProps['name'] | React.ComponentType
   }
-  icon?: ComponentWithAs<"svg", IconProps>;
+  icon?: ComponentWithAs<"svg", IconProps>
+  createItemRenderer?: (value: string) => string | JSX.Element
+  disableCreateItem?: boolean
 }
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
@@ -66,6 +68,15 @@ export const CUIAutoComplete = <T extends Item>(
     listItemStyleProps,
     onCreateItem,
     icon,
+    disableCreateItem = false,
+    createItemRenderer = (value) => (
+      <Text>
+        <Box as='span'>Create</Box>{' '}
+        <Box as='span' bg='yellow.300' fontWeight='bold'>
+          "{value}"
+        </Box>
+      </Text>
+    ),
     ...downshiftProps
   } = props
 
@@ -172,13 +183,13 @@ export const CUIAutoComplete = <T extends Item>(
   })
 
   React.useEffect(() => {
-    if (inputItems.length === 0) {
+    if (inputItems.length === 0 && !disableCreateItem) {
       setIsCreating(true)
       // @ts-ignore
       setInputItems([{ label: `${inputValue}`, value: inputValue }])
       setHighlightedIndex(0)
     }
-  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue])
+  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue, disableCreateItem])
 
   useDeepCompareEffect(() => {
     setInputItems(items)
@@ -262,12 +273,7 @@ export const CUIAutoComplete = <T extends Item>(
                 {...getItemProps({ item, index })}
               >
                 {isCreating ? (
-                  <Text>
-                    <Box as='span'>Create</Box>{' '}
-                    <Box as='span' bg='yellow.300' fontWeight='bold'>
-                      "{item.label}"
-                    </Box>
-                  </Text>
+                  createItemRenderer(item.label)
                 ) : (
                     <Box display='inline-flex' alignItems='center'>
                       {selectedItemValues.includes(item.value) && (
