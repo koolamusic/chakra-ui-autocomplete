@@ -163,6 +163,17 @@ export default function App() {
     )
   }
 
+  const customCreateItemRender = (value) => {
+    return (
+      <Text>
+        <Box as='span'>Create</Box>{' '}
+        <Box as='span' bg='red.300' fontWeight='bold'>
+          "{value}"
+        </Box>
+      </Text>
+    )
+  }
+
 
 
   return (
@@ -175,6 +186,7 @@ export default function App() {
             onCreateItem={handleCreateItem}
             items={pickerItems}
             itemRenderer={customRender}
+            createItemRenderer={customCreateItemRender}
             selectedItems={selectedItems}
             onSelectedItemsChange={(changes) =>
               handleSelectedItemsChange(changes.selectedItems)
@@ -205,6 +217,8 @@ export default function App() {
 | selectedIconProps      | Object   |          | Custom style props based on chakra-ui for the green tick icon in dropdown list, Example `{{ bg: 'gray.100', pt: '4'}}                                            |
 | icon      | Object   |   CheckCircleIcon       | @chakra-ui/icons Icon to be displayed instead of CheckCircleIcon                                            |
 | hideToggleButton      | boolean   |          | Hide the toggle button                                         |
+| disableCreateItem      | boolean   |          | Disable the "create new"  list Item. Default is `false`                                             |
+| createItemRenderer      | Function   |          | Custom Function that can either return a JSX Element or String, in order to control how the create new item within the Dropdown is rendered. The input value is passed as the first function parameter, Example: ``` (value) => `Create ${value}` ```                                            |
 
 ## Todo
 

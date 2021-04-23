@@ -15,6 +15,17 @@ import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import { ComponentWithAs } from '@chakra-ui/react'
 import { Item } from './types/Item'
 
+function defaultCreateItemRenderer(value: string) {
+  return (
+    <Text>
+      <Box as='span'>Create</Box>{' '}
+      <Box as='span' bg='yellow.300' fontWeight='bold'>
+        "{value}"
+      </Box>
+    </Text>
+  )
+}
+
 export interface CUIAutoCompleteProps<T extends Item>
   extends UseComboboxProps<T> {
   items: T[]
@@ -35,6 +46,8 @@ export interface CUIAutoCompleteProps<T extends Item>
   }
   icon?: ComponentWithAs<"svg", IconProps>
   hideToggleButton?: boolean
+  createItemRenderer?: (value: string) => string | JSX.Element
+  disableCreateItem?: boolean
 }
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
@@ -61,6 +74,8 @@ export const CUIAutoComplete = <T extends Item>(
     onCreateItem,
     icon,
     hideToggleButton = false,
+    disableCreateItem = false,
+    createItemRenderer = defaultCreateItemRenderer,
     ...downshiftProps
   } = props
 
@@ -151,7 +166,7 @@ export const CUIAutoComplete = <T extends Item>(
   })
 
   React.useEffect(() => {
-    if (inputItems.length === 0) {
+    if (inputItems.length === 0 && !disableCreateItem) {
       setIsCreating(true)
       // @ts-ignore
       setInputItems([{ label: `${inputValue}`, value: inputValue }])
@@ -214,12 +229,7 @@ export const CUIAutoComplete = <T extends Item>(
                 {...getItemProps({ item, index })}
               >
                 {isCreating ? (
-                  <Text>
-                    <Box as='span'>Create</Box>{' '}
-                    <Box as='span' bg='yellow.300' fontWeight='bold'>
-                      "{item.label}"
-                    </Box>
-                  </Text>
+                  createItemRenderer(item.label)
                 ) : (
                     <Box display='inline-flex' alignItems='center'>
                       {selectedItem?.value === item.value && (
