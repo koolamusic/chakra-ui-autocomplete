@@ -15,6 +15,7 @@ import { Input, InputProps } from '@chakra-ui/input'
 import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import { Tag, TagCloseButton, TagLabel, TagProps } from '@chakra-ui/tag'
 import { ComponentWithAs } from '@chakra-ui/react'
+import { useMemo } from 'react'
 
 export interface Item {
   label: string
@@ -87,7 +88,7 @@ export const CUIMultipleAutoComplete = <T extends Item>(
     removeSelectedItem,
     selectedItems
   } = useMultipleSelection(downshiftProps)
-  const selectedItemValues = selectedItems.map((item) => item.value)
+  const selectedItemValues = useMemo<string[]>(() => selectedItems.map((item) => item.value), [selectedItems])
 
   const {
     isOpen,
