@@ -163,6 +163,17 @@ export default function App() {
     )
   }
 
+  const customCreateItemRender = (value) => {
+    return (
+      <Text>
+        <Box as='span'>Create</Box>{' '}
+        <Box as='span' bg='red.300' fontWeight='bold'>
+          "{value}"
+        </Box>
+      </Text>
+    )
+  }
+
 
 
   return (
@@ -175,6 +186,7 @@ export default function App() {
             onCreateItem={handleCreateItem}
             items={pickerItems}
             itemRenderer={customRender}
+            createItemRenderer={customCreateItemRender}
             selectedItems={selectedItems}
             onSelectedItemsChange={(changes) =>
               handleSelectedItemsChange(changes.selectedItems)
