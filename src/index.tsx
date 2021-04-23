@@ -42,11 +42,24 @@ export interface CUIAutoCompleteProps<T extends Item>
   }
   icon?: ComponentWithAs<"svg", IconProps>
   hideToggleButton?: boolean
+  createItemRenderer?: (value: string) => string | JSX.Element
+  disableCreateItem?: boolean
 }
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
 }
+
+function defaultCreateItemRenderer(value: string) {
+  return (
+    <Text>
+      <Box as='span'>Create</Box>{' '}
+      <Box as='span' bg='yellow.300' fontWeight='bold'>
+        "{value}"
+      </Box>
+    </Text>
+  )
+} 
 
 export const CUIAutoComplete = <T extends Item>(
   props: CUIAutoCompleteProps<T>
@@ -68,6 +81,8 @@ export const CUIAutoComplete = <T extends Item>(
     onCreateItem,
     icon,
     hideToggleButton = false,
+    disableCreateItem = false,
+    createItemRenderer = defaultCreateItemRenderer,
     ...downshiftProps
   } = props
 
@@ -174,13 +189,13 @@ export const CUIAutoComplete = <T extends Item>(
   })
 
   React.useEffect(() => {
-    if (inputItems.length === 0) {
+    if (inputItems.length === 0 && !disableCreateItem) {
       setIsCreating(true)
       // @ts-ignore
       setInputItems([{ label: `${inputValue}`, value: inputValue }])
       setHighlightedIndex(0)
     }
-  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue])
+  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue, disableCreateItem])
 
   useDeepCompareEffect(() => {
     setInputItems(items)
@@ -266,12 +281,7 @@ export const CUIAutoComplete = <T extends Item>(
                 {...getItemProps({ item, index })}
               >
                 {isCreating ? (
-                  <Text>
-                    <Box as='span'>Create</Box>{' '}
-                    <Box as='span' bg='yellow.300' fontWeight='bold'>
-                      "{item.label}"
-                    </Box>
-                  </Text>
+                  createItemRenderer(item.label)
                 ) : (
                     <Box display='inline-flex' alignItems='center'>
                       {selectedItemValues.includes(item.value) && (
