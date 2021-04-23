@@ -16,11 +16,7 @@ import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import { Tag, TagCloseButton, TagLabel, TagProps } from '@chakra-ui/tag'
 import { ComponentWithAs } from '@chakra-ui/react'
 import { useMemo } from 'react'
-
-export interface Item {
-  label: string
-  value: string
-}
+import { Item } from './types/Item'
 
 export interface CUIMultipleAutoCompleteProps<T extends Item>
   extends UseMultipleSelectionProps<T> {
