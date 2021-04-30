@@ -12,7 +12,7 @@ import { Text, Stack, Box, BoxProps, List, ListItem, ListIcon } from '@chakra-ui
 import { Button, ButtonProps } from '@chakra-ui/button'
 import { Input, InputProps } from '@chakra-ui/input'
 import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
-import { ComponentWithAs } from '@chakra-ui/react'
+import { ComponentWithAs, FormControl } from '@chakra-ui/react'
 import { Item } from './types/Item'
 
 function defaultCreateItemRenderer(value: string) {
@@ -33,7 +33,7 @@ export interface CUIAutoCompleteProps<T extends Item>
   label: string
   highlightItemBg?: string
   onCreateItem?: (item: T) => void
-  optionFilterFunc?: (items: T[], inputValue: string) => T[]
+  optionFilterFunc?: ((items: T[], inputValue: string) => T[]) | ((items: T[], inputValue: string) => Promise<T[]>)
   itemRenderer?: (item: T) => string | JSX.Element
   labelStyleProps?: FormLabelProps
   inputStyleProps?: InputProps
@@ -44,7 +44,7 @@ export interface CUIAutoCompleteProps<T extends Item>
   selectedIconProps?: Omit<IconProps, 'name'> & {
     icon: IconProps['name'] | React.ComponentType
   }
-  icon?: ComponentWithAs<"svg", IconProps>
+  icon?: ComponentWithAs<'svg', IconProps>
   hideToggleButton?: boolean
   createItemRenderer?: (value: string) => string | JSX.Element
   disableCreateItem?: boolean
@@ -106,15 +106,15 @@ export const CUIAutoComplete = <T extends Item>(
     itemToString,
     inputValue,
     items: inputItems,
-    onInputValueChange: ({ inputValue }) => {      
-      const filteredItems = optionFilterFunc(items, inputValue || '')
+    onInputValueChange: async ({ inputValue }) => {      
+      setInputValue(inputValue || '')
+      const filteredItems = await optionFilterFunc(items, inputValue || '')
 
       if (isCreating && filteredItems.length > 0) {
         setIsCreating(false)
       }
 
       setInputItems(filteredItems)
-      setInputValue(inputValue || '')
     },
     stateReducer: (state, actionAndChanges) => {
       const { changes, type } = actionAndChanges
@@ -126,7 +126,7 @@ export const CUIAutoComplete = <T extends Item>(
             ...changes,
             highlightedIndex: state.highlightedIndex,
             ...((changes.selectedItem && changes.selectedItem.label) ? {
-              inputValue: changes.selectedItem.label,
+              inputValue: changes.selectedItem.value === '' ? '' : changes.selectedItem.label,
             } : {}),
             isOpen: false
           }
@@ -153,10 +153,10 @@ export const CUIAutoComplete = <T extends Item>(
               setIsCreating(false)
               setInputItems(items)
               setInputValue(selectedItem.label)
-            // } else {
-              // selectItem(selectedItem)
-              // setInputValue(selectedItem.label)
-            }
+              // } else {
+                // selectItem(selectedItem)
+                // setInputValue(selectedItem.label)
+              }
           }
           break
         default:
@@ -172,7 +172,7 @@ export const CUIAutoComplete = <T extends Item>(
       setInputItems([{ label: `${inputValue}`, value: inputValue }])
       setHighlightedIndex(0)
     }
-  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue])
+  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue, disableCreateItem])
 
   useDeepCompareEffect(() => {
     setInputItems(items)
@@ -184,15 +184,15 @@ export const CUIAutoComplete = <T extends Item>(
   }
 
   return (
-    <Stack>
-      <FormLabel {...{...getLabelProps({}), ...labelStyleProps}}>{label}</FormLabel>
+    <FormControl as={Stack}>
+      <FormLabel {...{ ...getLabelProps({}), ...labelStyleProps }}>{label}</FormLabel>
       {/* -----------Section that renders the input element ----------------- */}
       <Stack isInline {...getComboboxProps()}>
         <Input
           {...inputStyleProps}
           {...getInputProps({
             onClick: isOpen ? () => { } : openMenu,
-            onFocus: isOpen ? () => { } : openMenu
+            onFocus: isOpen ? () => { } : openMenu,
           })}
         />
         {!hideToggleButton && (
@@ -231,34 +231,34 @@ export const CUIAutoComplete = <T extends Item>(
                 {isCreating ? (
                   createItemRenderer(item.label)
                 ) : (
-                    <Box display='inline-flex' alignItems='center'>
-                      {selectedItem?.value === item.value && (
-                        <ListIcon
-                          as={icon || CheckCircleIcon}
-                          color='green.500'
-                          role='img'
-                          display='inline'
-                          aria-label='Selected'
-                          {...selectedIconProps}
-                        />
-                      )}
+                  <Box display='inline-flex' alignItems='center'>
+                    {selectedItem?.value === item.value && (
+                      <ListIcon
+                        as={icon || CheckCircleIcon}
+                        color='green.500'
+                        role='img'
+                        display='inline'
+                        aria-label='Selected'
+                        {...selectedIconProps}
+                      />
+                    )}
 
-                      {itemRenderer ? (
-                        itemRenderer(item)
-                      ) : (
-                          <Highlighter
-                            autoEscape
-                            searchWords={[inputValue || '']}
-                            textToHighlight={defaultItemRenderer(item)}
-                          />
-                        )}
-                    </Box>
-                  )}
+                    {itemRenderer ? (
+                      itemRenderer(item)
+                    ) : (
+                      <Highlighter
+                        autoEscape
+                        searchWords={[inputValue || '']}
+                        textToHighlight={defaultItemRenderer(item)}
+                      />
+                    )}
+                  </Box>
+                )}
               </ListItem>
             ))}
         </List>
       </Box>
       {/* ----------- End Section that renders the Menu Lists Component ----------------- */}
-    </Stack>
+    </FormControl>
   )
 }
