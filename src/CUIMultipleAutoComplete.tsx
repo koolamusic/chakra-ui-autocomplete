@@ -288,7 +288,7 @@ export const CUIMultipleAutoComplete = <T extends Item>(
                           role='img'
                           display='inline'
                           aria-label='Selected'
-                          {...selectedIconProps}
+                          {...selectedIconProps as any}
                         />
                       )}
 

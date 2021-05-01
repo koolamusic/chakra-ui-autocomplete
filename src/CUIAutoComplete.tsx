@@ -153,9 +153,6 @@ export const CUIAutoComplete = <T extends Item>(
               setIsCreating(false)
               setInputItems(items)
               setInputValue(selectedItem.label)
-              // } else {
-                // selectItem(selectedItem)
-                // setInputValue(selectedItem.label)
               }
           }
           break
@@ -239,7 +236,7 @@ export const CUIAutoComplete = <T extends Item>(
                         role='img'
                         display='inline'
                         aria-label='Selected'
-                        {...selectedIconProps}
+                        {...selectedIconProps as any}
                       />
                     )}
 
