@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Avatar, Flex, Heading, Text } from '@chakra-ui/react'
-import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import { CUIAutoComplete } from '../../dist'
 import { countries } from './constants'
 import { Item } from './App'
 
