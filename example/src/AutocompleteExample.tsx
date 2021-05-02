@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { Avatar, Flex, Heading, Text } from '@chakra-ui/react'
-import { CUIAutoComplete } from '../../dist'
+import { CUIAutocomplete } from '../../dist'
 import { countries } from './constants'
 import { Item } from './App'
 
@@ -8,7 +8,7 @@ type Props = {
 //
 }
 
-export const AutoCompleteExample: FC<Props> = () => {
+export const AutocompleteExample: FC<Props> = () => {
   const [pickerItems, setPickerItems] = React.useState(countries);
   const [selectedItem, setSelectedItem] = React.useState<Item | undefined>(undefined);
 
@@ -34,11 +34,11 @@ export const AutoCompleteExample: FC<Props> = () => {
   
   return (
     <Flex minW="25rem" w="25rem" flexDirection="column" my={20}>
-      <Heading mb={8} as="h1" size="lg" color="blue.600">AutoComplete.tsx</Heading>
+      <Heading mb={8} as="h1" size="lg" color="blue.600">Autocomplete.tsx</Heading>
 
       <Heading mb={3} as="h2" size="md">Basic Example with Style Props</Heading>
 
-      <CUIAutoComplete
+      <CUIAutocomplete
         label="Choose preferred work locations"
         placeholder="Type a Country"
         onCreateItem={handleCreateItem}
@@ -50,7 +50,7 @@ export const AutoCompleteExample: FC<Props> = () => {
 
       <Flex mt={6} />
       <Heading mb={3} as="h2" size="md">Basic Example with Custom Renderer</Heading>
-      <CUIAutoComplete
+      <CUIAutocomplete
         label="Choose preferred work locations"
         placeholder="Type a Country"
         onCreateItem={handleCreateItem}

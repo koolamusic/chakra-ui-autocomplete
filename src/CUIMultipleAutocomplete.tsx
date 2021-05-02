@@ -29,7 +29,7 @@ function defaultCreateItemRenderer(value: string) {
   )
 } 
 
-export interface CUIMultipleAutoCompleteProps<T extends Item>
+export interface CUIMultipleAutocompleteProps<T extends Item>
   extends UseMultipleSelectionProps<T> {
   items: T[]
   placeholder: string
@@ -58,9 +58,9 @@ function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
 }
 
-export const CUIMultipleAutoComplete = <T extends Item>(
-  props: CUIMultipleAutoCompleteProps<T>
-): React.ReactElement<CUIMultipleAutoCompleteProps<T>> => {
+export const CUIMultipleAutocomplete = <T extends Item>(
+  props: CUIMultipleAutocompleteProps<T>
+): React.ReactElement<CUIMultipleAutocompleteProps<T>> => {
   const {
     items,
     optionFilterFunc = defaultOptionFilterFunc,

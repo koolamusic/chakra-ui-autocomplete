@@ -1,8 +1,8 @@
 import React from 'react'
 import { ThemeProvider, CSSReset, Flex } from '@chakra-ui/react'
 import theme from './theme'
-import { AutoCompleteExample } from './AutoCompleteExample';
-import { MultipleAutoCompleteExample } from './MultipleAutoCompleteExample';
+import { AutocompleteExample } from './AutocompleteExample';
+import { MultipleAutocompleteExample } from './MultipleAutocompleteExample';
 
 
 export interface Item {
@@ -16,8 +16,8 @@ export default function App() {
       <CSSReset />
 
       <Flex flexDir="column" flexWrap="wrap" px={6} pt={12} pb={20} bg="rgba(247,250,252)" justify="center" alignItems="center" borderRight="1px solid #ddd">
-        <AutoCompleteExample />
-        <MultipleAutoCompleteExample />
+        <AutocompleteExample />
+        <MultipleAutocompleteExample />
       </Flex>
 
     </ThemeProvider >

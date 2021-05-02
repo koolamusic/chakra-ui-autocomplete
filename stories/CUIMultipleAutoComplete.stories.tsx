@@ -11,17 +11,17 @@ const countries = [
   { value: "germany", label: "Germany" }
 ]
 
-import { CUIMultipleAutoCompleteProps, CUIMultipleAutoComplete, Item } from '../src'
+import { CUIMultipleAutocompleteProps, CUIMultipleAutocomplete, Item } from '../src'
 
 export default {
-  title: 'Documentation/CUIMultipleAutoComplete',
-  component: CUIMultipleAutoComplete,
+  title: 'Documentation/CUIMultipleAutocomplete',
+  component: CUIMultipleAutocomplete,
   argTypes: {
     highlightItemBg: { control: 'color' },
   },
 } as Meta
 
-const Template: Story<CUIMultipleAutoCompleteProps<Item>> = (args) => <CUIMultipleAutoComplete {...args} />
+const Template: Story<CUIMultipleAutocompleteProps<Item>> = (args) => <CUIMultipleAutocomplete {...args} />
 
 export const SimpleExample = Template.bind({})
 

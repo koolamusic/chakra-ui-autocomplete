@@ -1,4 +1,4 @@
-import { CUIMultipleAutoComplete } from './index'
+import { CUIMultipleAutocomplete } from './index'
 
 import React from 'react'
 import renderer from 'react-test-renderer'
@@ -57,7 +57,7 @@ export default function MultiSelect() {
           Basic Multiple Example with Style Props
         </Heading>
 
-        <CUIMultipleAutoComplete
+        <CUIMultipleAutocomplete
           tagStyleProps={{
             rounded: 'full'
           }}
@@ -78,7 +78,7 @@ export default function MultiSelect() {
         <Heading mb={3} as='h1' size='md'>
           Basic Multiple Example with Custom Renderer
         </Heading>
-        <CUIMultipleAutoComplete
+        <CUIMultipleAutocomplete
           tagStyleProps={{
             rounded: 'full'
           }}
@@ -97,7 +97,7 @@ export default function MultiSelect() {
   )
 }
 
-describe('ChakraUI AutoComplete ', () => {
+describe('ChakraUI Autocomplete ', () => {
   test('it renders', () => {
     const tree = renderer.create(<MultiSelect />).toJSON()
     expect(tree).toMatchSnapshot()

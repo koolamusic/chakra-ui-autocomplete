@@ -1,3 +1,3 @@
-export type AutoCompleteBaseProps = {
+export type AutocompleteBaseProps = {
 
 }

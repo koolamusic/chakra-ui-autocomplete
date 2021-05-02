@@ -26,7 +26,7 @@ function defaultCreateItemRenderer(value: string) {
   )
 }
 
-export interface CUIAutoCompleteProps<T extends Item>
+export interface CUIAutocompleteProps<T extends Item>
   extends UseComboboxProps<T> {
   items: T[]
   placeholder: string
@@ -54,9 +54,9 @@ function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })
 }
 
-export const CUIAutoComplete = <T extends Item>(
-  props: CUIAutoCompleteProps<T>
-): React.ReactElement<CUIAutoCompleteProps<T>> => {
+export const CUIAutocomplete = <T extends Item>(
+  props: CUIAutocompleteProps<T>
+): React.ReactElement<CUIAutocompleteProps<T>> => {
   const itemToString = (item?: T | null) => (item ? item.label : '')
   const {
     items,

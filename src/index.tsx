@@ -1,10 +1,10 @@
-import { CUIAutoComplete, CUIAutoCompleteProps } from "./CUIAutoComplete"
-import { CUIMultipleAutoComplete, CUIMultipleAutoCompleteProps } from "./CUIMultipleAutoComplete"
+import { CUIAutocomplete, CUIAutocompleteProps } from "./CUIAutocomplete"
+import { CUIMultipleAutocomplete, CUIMultipleAutocompleteProps } from "./CUIMultipleAutocomplete"
 import { Item } from "./types/Item"
 
 export {
-  CUIAutoComplete,
-  CUIMultipleAutoComplete,
+  CUIAutocomplete,
+  CUIMultipleAutocomplete,
 }
 
-export type { Item, CUIAutoCompleteProps, CUIMultipleAutoCompleteProps }
+export type { Item, CUIAutocompleteProps, CUIMultipleAutocompleteProps }

@@ -11,17 +11,17 @@ const countries = [
   { value: "germany", label: "Germany" }
 ]
 
-import { CUIAutoComplete, CUIAutoCompleteProps, Item } from '../src'
+import { CUIAutocomplete, CUIAutocompleteProps, Item } from '../src'
 
 export default {
-  title: 'Documentation/CUIAutoComplete',
-  component: CUIAutoComplete,
+  title: 'Documentation/CUIAutocomplete',
+  component: CUIAutocomplete,
   argTypes: {
     highlightItemBg: { control: 'color' },
   },
 } as Meta
 
-const Template: Story<CUIAutoCompleteProps<Item>> = (args) => <CUIAutoComplete {...args} />
+const Template: Story<CUIAutocompleteProps<Item>> = (args) => <CUIAutocomplete {...args} />
 
 export const SimpleExample = Template.bind({})
 

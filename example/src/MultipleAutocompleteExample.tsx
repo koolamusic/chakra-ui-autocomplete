@@ -1,10 +1,10 @@
 import React, { FC } from 'react'
 import { Avatar, Flex, Heading, Text } from '@chakra-ui/react'
-import { CUIMultipleAutoComplete } from '../../dist'
+import { CUIMultipleAutocomplete } from '../../dist'
 import { countries } from './constants'
 import { Item } from './App'
 
-export const MultipleAutoCompleteExample: FC = () => {
+export const MultipleAutocompleteExample: FC = () => {
   const [pickerItems, setPickerItems] = React.useState(countries);
   const [selectedItems, setSelectedItems] = React.useState<Item[]>([]);
 
@@ -30,11 +30,11 @@ export const MultipleAutoCompleteExample: FC = () => {
 
   return (
     <Flex minW="25rem" w="25rem" flexDirection="column">
-      <Heading mb={8} as="h1" size="lg" color="blue.600">MultipleAutoComplete.tsx</Heading>
+      <Heading mb={8} as="h1" size="lg" color="blue.600">MultipleAutocomplete.tsx</Heading>
 
       <Heading mb={3} as="h2" size="md">Basic Multiple Example with Style Props</Heading>
 
-      <CUIMultipleAutoComplete
+      <CUIMultipleAutocomplete
         tagStyleProps={{
           rounded: 'full'
         }}
@@ -51,7 +51,7 @@ export const MultipleAutoCompleteExample: FC = () => {
 
       <Flex mt={6} />
       <Heading mb={3} as="h2" size="md">Basic Multiple Example with Custom Renderer</Heading>
-      <CUIMultipleAutoComplete
+      <CUIMultipleAutocomplete
         tagStyleProps={{
           rounded: 'full'
         }}
