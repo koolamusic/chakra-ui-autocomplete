@@ -7,48 +7,23 @@ import {
 import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
-import { FormLabel, FormLabelProps } from '@chakra-ui/form-control'
-import { Text, Stack, Box, BoxProps, List, ListItem, ListIcon } from '@chakra-ui/layout'
-import { Button, ButtonProps } from '@chakra-ui/button'
-import { Input, InputProps } from '@chakra-ui/input'
-import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
-import { ComponentWithAs, FormControl } from '@chakra-ui/react'
+import { FormLabel } from '@chakra-ui/form-control'
+import { Stack, Box, List, ListItem, ListIcon } from '@chakra-ui/layout'
+import { CreateItem } from './CreateItem'
+import { Button } from '@chakra-ui/button'
+import { Input } from '@chakra-ui/input'
+import { CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
+import { FormControl } from '@chakra-ui/react'
 import { Item } from './types/Item'
+import { AutocompleteBaseProps } from './types/AutoCompleteBaseProps'
 
 function defaultCreateItemRenderer(value: string) {
   return (
-    <Text>
-      <Box as='span'>Create</Box>{' '}
-      <Box as='span' bg='yellow.300' fontWeight='bold'>
-        "{value}"
-      </Box>
-    </Text>
+    <CreateItem value={value} />
   )
 }
 
-export interface CUIAutocompleteProps<T extends Item>
-  extends UseComboboxProps<T> {
-  items: T[]
-  placeholder: string
-  label: string
-  highlightItemBg?: string
-  onCreateItem?: (item: T) => void
-  optionFilterFunc?: ((items: T[], inputValue: string) => T[]) | ((items: T[], inputValue: string) => Promise<T[]>)
-  itemRenderer?: (item: T) => string | JSX.Element
-  labelStyleProps?: FormLabelProps
-  inputStyleProps?: InputProps
-  toggleButtonStyleProps?: ButtonProps
-  listStyleProps?: BoxProps
-  listItemStyleProps?: BoxProps
-  emptyState?: (inputValue: string) => React.ReactNode
-  selectedIconProps?: Omit<IconProps, 'name'> & {
-    icon: IconProps['name'] | React.ComponentType
-  }
-  icon?: ComponentWithAs<'svg', IconProps>
-  hideToggleButton?: boolean
-  createItemRenderer?: (value: string) => string | JSX.Element
-  disableCreateItem?: boolean
-}
+export type CUIAutocompleteProps<T extends Item> = UseComboboxProps<T> & AutocompleteBaseProps<T>
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
   return matchSorter(items, inputValue, { keys: ['value', 'label'] })

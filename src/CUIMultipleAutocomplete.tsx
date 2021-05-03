@@ -8,50 +8,26 @@ import {
 import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
-import { FormLabel, FormLabelProps } from '@chakra-ui/form-control'
-import { Text, Stack, Box, BoxProps, List, ListItem, ListIcon } from '@chakra-ui/layout'
-import { Button, ButtonProps } from '@chakra-ui/button'
-import { Input, InputProps } from '@chakra-ui/input'
-import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
+import { FormLabel } from '@chakra-ui/form-control'
+import { Stack, Box, List, ListItem, ListIcon } from '@chakra-ui/layout'
+import { Button } from '@chakra-ui/button'
+import { Input } from '@chakra-ui/input'
+import { CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
 import { Tag, TagCloseButton, TagLabel, TagProps } from '@chakra-ui/tag'
-import { ComponentWithAs } from '@chakra-ui/react'
 import { useMemo } from 'react'
 import { Item } from './types/Item'
+import { AutocompleteBaseProps } from './types/AutoCompleteBaseProps'
+import { CreateItem } from './CreateItem'
 
 function defaultCreateItemRenderer(value: string) {
   return (
-    <Text>
-      <Box as='span'>Create</Box>{' '}
-      <Box as='span' bg='yellow.300' fontWeight='bold'>
-        "{value}"
-      </Box>
-    </Text>
+    <CreateItem value={value} />
   )
 } 
 
-export interface CUIMultipleAutocompleteProps<T extends Item>
-  extends UseMultipleSelectionProps<T> {
-  items: T[]
-  placeholder: string
-  label: string
-  highlightItemBg?: string
-  onCreateItem?: (item: T) => void
-  optionFilterFunc?: (items: T[], inputValue: string) => T[]
-  itemRenderer?: (item: T) => string | JSX.Element
-  labelStyleProps?: FormLabelProps
-  inputStyleProps?: InputProps
-  toggleButtonStyleProps?: ButtonProps
+export type CUIMultipleAutocompleteProps<T extends Item> =
+  UseMultipleSelectionProps<T> & AutocompleteBaseProps<T> & {
   tagStyleProps?: TagProps
-  listStyleProps?: BoxProps
-  listItemStyleProps?: BoxProps
-  emptyState?: (inputValue: string) => React.ReactNode
-  selectedIconProps?: Omit<IconProps, 'name'> & {
-    icon: IconProps['name'] | React.ComponentType
-  }
-  icon?: ComponentWithAs<"svg", IconProps>
-  hideToggleButton?: boolean
-  createItemRenderer?: (value: string) => string | JSX.Element
-  disableCreateItem?: boolean
 }
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
@@ -117,8 +93,8 @@ export const CUIMultipleAutocomplete = <T extends Item>(
     inputValue,
     selectedItem: undefined,
     items: inputItems,
-    onInputValueChange: ({ inputValue, selectedItem }) => {
-      const filteredItems = optionFilterFunc(items, inputValue || '')
+    onInputValueChange: async ({ inputValue, selectedItem }) => {
+      const filteredItems = await optionFilterFunc(items, inputValue || '')
 
       if (isCreating && filteredItems.length > 0) {
         setIsCreating(false)
