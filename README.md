@@ -228,6 +228,9 @@ export default function App() {
 - [x] Add prop for Items Renderer to enable rendering of React Element
 - [ ] Ability to define `chakra-ui components` that will render in place of `Tags, MenuList, TextInput, Form Label` will check render props or headless UI patterns.
 
+## Contributing
+Read the contributing guide [here](CONTRIBUTING.md)
+
 ## License
 
 MIT © [koolamusic](https://github.com/koolamusic)
