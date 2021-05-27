@@ -1,4 +1,4 @@
-# Chakra-UI AutoComplete
+# Chakra-UI Autocomplete
 
 > An Accessible Autocomplete Utility for [Chakra UI](github.com/chakra-ui/chakra-ui) that composes [Downshift](https://github.com/downshift-js/downshift) ComboBox
 
@@ -20,7 +20,7 @@ npm install --save chakra-ui-autocomplete
 
 ```tsx
 import React from 'react'
-import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import { CUIAutocomplete } from 'chakra-ui-autocomplete'
 
 
 export interface Item {
@@ -53,7 +53,7 @@ export default function App() {
   };
 
   return (
-        <CUIAutoComplete
+        <CUIAutocomplete
           label="Choose preferred work locations"
           placeholder="Type a Country"
           onCreateItem={handleCreateItem}
@@ -73,7 +73,7 @@ export default function App() {
 
 ```jsx
 import React from 'react'
-import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import { CUIAutocomplete } from 'chakra-ui-autocomplete'
 
 const countries = [
   { value: "ghana", label: "Ghana" },
@@ -101,7 +101,7 @@ export default function App() {
   };
 
   return (
-        <CUIAutoComplete
+        <CUIAutocomplete
           label="Choose preferred work locations"
           placeholder="Type a Country"
           onCreateItem={handleCreateItem}
@@ -115,6 +115,9 @@ export default function App() {
 }
 ```
 
+[View on CodeSandbox](https://codesandbox.io/s/chakra-ui-autocomplete-example1-8uxbs)
+[![109296467-3cdbe100-7828-11eb-9491-1bd069bf90a4](https://user-images.githubusercontent.com/587136/109479134-1922d000-7aa0-11eb-9a7f-14d3a5f0d63d.png)](https://codesandbox.io/s/chakra-ui-autocomplete-example1-8uxbs)
+
 ### Usage Example with Custom Item Renderer
 
 ![custom-render-image](./img/custom-example.gif)
@@ -122,8 +125,8 @@ export default function App() {
 
 ```jsx
 import React from 'react'
-import { Text, Flex, Avatar } from '@chakra-ui/core'
-import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import { Text, Flex, Avatar } from '@chakra-ui/react'
+import { CUIAutocomplete } from 'chakra-ui-autocomplete'
 
 
 const countries = [
@@ -160,10 +163,21 @@ export default function App() {
     )
   }
 
+  const customCreateItemRender = (value) => {
+    return (
+      <Text>
+        <Box as='span'>Create</Box>{' '}
+        <Box as='span' bg='red.300' fontWeight='bold'>
+          "{value}"
+        </Box>
+      </Text>
+    )
+  }
+
 
 
   return (
-          <CUIAutoComplete
+          <CUIAutocomplete
             tagStyleProps={{
               rounded: 'full'
             }}
@@ -172,6 +186,7 @@ export default function App() {
             onCreateItem={handleCreateItem}
             items={pickerItems}
             itemRenderer={customRender}
+            createItemRenderer={customCreateItemRender}
             selectedItems={selectedItems}
             onSelectedItemsChange={(changes) =>
               handleSelectedItemsChange(changes.selectedItems)
@@ -200,6 +215,10 @@ export default function App() {
 | listStyleProps         | Object   |          | Custom style props based on chakra-ui for dropdown list, Example `{{ bg: 'gray.100', pt: '4'}}                                                                   |
 | listItemStyleProps     | Object   |          | Custom style props based on chakra-ui for single list item in dropdown, Example`{{ bg: 'gray.100', pt: '4'}}                                                     |
 | selectedIconProps      | Object   |          | Custom style props based on chakra-ui for the green tick icon in dropdown list, Example `{{ bg: 'gray.100', pt: '4'}}                                            |
+| icon      | Object   |   CheckCircleIcon       | @chakra-ui/icons Icon to be displayed instead of CheckCircleIcon                                            |
+| hideToggleButton      | boolean   |          | Hide the toggle button                                         |
+| disableCreateItem      | boolean   |          | Disable the "create new"  list Item. Default is `false`                                             |
+| createItemRenderer      | Function   |          | Custom Function that can either return a JSX Element or String, in order to control how the create new item within the Dropdown is rendered. The input value is passed as the first function parameter, Example: ``` (value) => `Create ${value}` ```                                            |
 
 ## Todo
 
@@ -208,6 +227,9 @@ export default function App() {
 - [x] Feature to Create when not in list
 - [x] Add prop for Items Renderer to enable rendering of React Element
 - [ ] Ability to define `chakra-ui components` that will render in place of `Tags, MenuList, TextInput, Form Label` will check render props or headless UI patterns.
+
+## Contributing
+Read the contributing guide [here](CONTRIBUTING.md)
 
 ## License
 
