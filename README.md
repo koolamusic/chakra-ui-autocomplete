@@ -219,6 +219,7 @@ export default function App() {
 | hideToggleButton      | boolean   |          | Hide the toggle button                                         |
 | disableCreateItem      | boolean   |          | Disable the "create new"  list Item. Default is `false`                                             |
 | createItemRenderer      | Function   |          | Custom Function that can either return a JSX Element or String, in order to control how the create new item within the Dropdown is rendered. The input value is passed as the first function parameter, Example: ``` (value) => `Create ${value}` ```                                            |
+| renderCustomInput         | Function    |       | Custom function to render input from outside chakra-ui-autocomplete. Receives input props for the input element and toggleButtonProps for the toggle button. Can use this to render chakra-ui's ```<InputGroup>```. Example: ```(inputProps) => (<InputGroup><InputLeftElement pointerEvents="none" children={<PhoneIcon color="gray.300" />} /><Input {...inputProps} /></InputGroup>)```
 
 ## Todo
 

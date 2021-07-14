@@ -9,7 +9,15 @@ import matchSorter from 'match-sorter'
 import Highlighter from 'react-highlight-words'
 import useDeepCompareEffect from 'react-use/lib/useDeepCompareEffect'
 import { FormLabel, FormLabelProps } from '@chakra-ui/form-control'
-import { Text, Stack, Box, BoxProps, List, ListItem, ListIcon } from '@chakra-ui/layout'
+import {
+  Text,
+  Stack,
+  Box,
+  BoxProps,
+  List,
+  ListItem,
+  ListIcon
+} from '@chakra-ui/layout'
 import { Button, ButtonProps } from '@chakra-ui/button'
 import { Input, InputProps } from '@chakra-ui/input'
 import { IconProps, CheckCircleIcon, ArrowDownIcon } from '@chakra-ui/icons'
@@ -40,10 +48,11 @@ export interface CUIAutoCompleteProps<T extends Item>
   selectedIconProps?: Omit<IconProps, 'name'> & {
     icon: IconProps['name'] | React.ComponentType
   }
-  icon?: ComponentWithAs<"svg", IconProps>
+  icon?: ComponentWithAs<'svg', IconProps>
   hideToggleButton?: boolean
   createItemRenderer?: (value: string) => string | JSX.Element
   disableCreateItem?: boolean
+  renderCustomInput?: (inputProps: any, toggleButtonProps: any) => JSX.Element
 }
 
 function defaultOptionFilterFunc<T>(items: T[], inputValue: string) {
@@ -59,7 +68,7 @@ function defaultCreateItemRenderer(value: string) {
       </Box>
     </Text>
   )
-} 
+}
 
 export const CUIAutoComplete = <T extends Item>(
   props: CUIAutoCompleteProps<T>
@@ -83,6 +92,7 @@ export const CUIAutoComplete = <T extends Item>(
     hideToggleButton = false,
     disableCreateItem = false,
     createItemRenderer = defaultCreateItemRenderer,
+    renderCustomInput,
     ...downshiftProps
   } = props
 
@@ -195,7 +205,13 @@ export const CUIAutoComplete = <T extends Item>(
       setInputItems([{ label: `${inputValue}`, value: inputValue }])
       setHighlightedIndex(0)
     }
-  }, [inputItems, setIsCreating, setHighlightedIndex, inputValue, disableCreateItem])
+  }, [
+    inputItems,
+    setIsCreating,
+    setHighlightedIndex,
+    inputValue,
+    disableCreateItem
+  ])
 
   useDeepCompareEffect(() => {
     setInputItems(items)
@@ -208,7 +224,9 @@ export const CUIAutoComplete = <T extends Item>(
 
   return (
     <Stack>
-      <FormLabel {...{...getLabelProps({}), ...labelStyleProps}}>{label}</FormLabel>
+      <FormLabel {...{ ...getLabelProps({}), ...labelStyleProps }}>
+        {label}
+      </FormLabel>
 
       {/* ---------Stack with Selected Menu Tags above the Input Box--------- */}
       {selectedItems && (
@@ -236,25 +254,49 @@ export const CUIAutoComplete = <T extends Item>(
 
       {/* -----------Section that renders the input element ----------------- */}
       <Stack isInline {...getComboboxProps()}>
-        <Input
-          {...inputStyleProps}
-          {...getInputProps(
-            getDropdownProps({
-              placeholder,
-              onClick: isOpen ? () => { } : openMenu,
-              onFocus: isOpen ? () => { } : openMenu,
-              ref: disclosureRef
-            })
-          )}
-        />
-        {!hideToggleButton && (
-          <Button
-            {...toggleButtonStyleProps}
-            {...getToggleButtonProps()}
-            aria-label='toggle menu'
-          >
-            <ArrowDownIcon />
-          </Button>
+        {renderCustomInput ? (
+          renderCustomInput(
+            {
+              ...inputStyleProps,
+              ...getInputProps(
+                getDropdownProps({
+                  placeholder,
+                  onClick: isOpen ? () => {} : openMenu,
+                  onFocus: isOpen ? () => {} : openMenu,
+                  ref: disclosureRef
+                })
+              )
+            },
+            {
+              ...toggleButtonStyleProps,
+              ...getToggleButtonProps(),
+              ariaLabel: 'toggle menu',
+              hideToggleButton
+            }
+          )
+        ) : (
+          <>
+            <Input
+              {...inputStyleProps}
+              {...getInputProps(
+                getDropdownProps({
+                  placeholder,
+                  onClick: isOpen ? () => {} : openMenu,
+                  onFocus: isOpen ? () => {} : openMenu,
+                  ref: disclosureRef
+                })
+              )}
+            />
+            {!hideToggleButton && (
+              <Button
+                {...toggleButtonStyleProps}
+                {...getToggleButtonProps()}
+                aria-label='toggle menu'
+              >
+                <ArrowDownIcon />
+              </Button>
+            )}
+          </>
         )}
       </Stack>
       {/* -----------Section that renders the input element ----------------- */}
@@ -283,29 +325,29 @@ export const CUIAutoComplete = <T extends Item>(
                 {isCreating ? (
                   createItemRenderer(item.label)
                 ) : (
-                    <Box display='inline-flex' alignItems='center'>
-                      {selectedItemValues.includes(item.value) && (
-                        <ListIcon
-                          as={icon || CheckCircleIcon}
-                          color='green.500'
-                          role='img'
-                          display='inline'
-                          aria-label='Selected'
-                          {...selectedIconProps}
-                        />
-                      )}
+                  <Box display='inline-flex' alignItems='center'>
+                    {selectedItemValues.includes(item.value) && (
+                      <ListIcon
+                        as={icon || CheckCircleIcon}
+                        color='green.500'
+                        role='img'
+                        display='inline'
+                        aria-label='Selected'
+                        {...selectedIconProps}
+                      />
+                    )}
 
-                      {itemRenderer ? (
-                        itemRenderer(item)
-                      ) : (
-                          <Highlighter
-                            autoEscape
-                            searchWords={[inputValue || '']}
-                            textToHighlight={defaultItemRenderer(item)}
-                          />
-                        )}
-                    </Box>
-                  )}
+                    {itemRenderer ? (
+                      itemRenderer(item)
+                    ) : (
+                      <Highlighter
+                        autoEscape
+                        searchWords={[inputValue || '']}
+                        textToHighlight={defaultItemRenderer(item)}
+                      />
+                    )}
+                  </Box>
+                )}
               </ListItem>
             ))}
         </List>
