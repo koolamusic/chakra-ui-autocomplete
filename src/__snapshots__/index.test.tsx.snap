@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChakraUI AutoComplete  it renders 1`] = `
+exports[`ChakraUI Autocomplete  it renders 1`] = `
 <div
   className="css-1010j8n"
 >

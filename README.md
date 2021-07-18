@@ -1,4 +1,4 @@
-# Chakra-UI AutoComplete
+# Chakra-UI Autocomplete
 
 > An Accessible Autocomplete Utility for [Chakra UI](github.com/chakra-ui/chakra-ui) that composes [Downshift](https://github.com/downshift-js/downshift) ComboBox
 
@@ -20,7 +20,7 @@ npm install --save chakra-ui-autocomplete
 
 ```tsx
 import React from 'react'
-import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import { CUIAutocomplete } from 'chakra-ui-autocomplete'
 
 
 export interface Item {
@@ -53,7 +53,7 @@ export default function App() {
   };
 
   return (
-        <CUIAutoComplete
+        <CUIAutocomplete
           label="Choose preferred work locations"
           placeholder="Type a Country"
           onCreateItem={handleCreateItem}
@@ -73,7 +73,7 @@ export default function App() {
 
 ```jsx
 import React from 'react'
-import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import { CUIAutocomplete } from 'chakra-ui-autocomplete'
 
 const countries = [
   { value: "ghana", label: "Ghana" },
@@ -101,7 +101,7 @@ export default function App() {
   };
 
   return (
-        <CUIAutoComplete
+        <CUIAutocomplete
           label="Choose preferred work locations"
           placeholder="Type a Country"
           onCreateItem={handleCreateItem}
@@ -126,7 +126,7 @@ export default function App() {
 ```jsx
 import React from 'react'
 import { Text, Flex, Avatar } from '@chakra-ui/react'
-import { CUIAutoComplete } from 'chakra-ui-autocomplete'
+import { CUIAutocomplete } from 'chakra-ui-autocomplete'
 
 
 const countries = [
@@ -177,7 +177,7 @@ export default function App() {
 
 
   return (
-          <CUIAutoComplete
+          <CUIAutocomplete
             tagStyleProps={{
               rounded: 'full'
             }}
@@ -228,6 +228,9 @@ export default function App() {
 - [x] Feature to Create when not in list
 - [x] Add prop for Items Renderer to enable rendering of React Element
 - [ ] Ability to define `chakra-ui components` that will render in place of `Tags, MenuList, TextInput, Form Label` will check render props or headless UI patterns.
+
+## Contributing
+Read the contributing guide [here](CONTRIBUTING.md)
 
 ## License
 
