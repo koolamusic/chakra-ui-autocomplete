@@ -6,7 +6,7 @@
 	"license": "MIT",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
-	"module": "dist/index.modern.js",
+	"module": "dist/index.js",
 	"source": "src/index.tsx",
 	"engines": {
 		"node": ">=10"
