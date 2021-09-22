@@ -1,6 +1,6 @@
 {
 	"name": "chakra-ui-autocomplete",
-	"version": "1.4.3",
+	"version": "1.4.4",
 	"description": "An accessible autocomplete utility library built for chakra UI",
 	"author": "Andrew Miracle <me@andrewmiracle.com>",
 	"license": "MIT",
