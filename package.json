@@ -1,21 +1,22 @@
 {
 	"name": "chakra-ui-autocomplete",
-	"version": "1.1.1",
-	"description": "An autocomplete utility library for chakra UI",
+	"version": "1.4.3",
+	"description": "An accessible autocomplete utility library built for chakra UI",
 	"author": "Andrew Miracle <me@andrewmiracle.com>",
 	"license": "MIT",
 	"main": "dist/index.js",
 	"typings": "dist/index.d.ts",
-	"module": "dist/index.modern.js",
+	"module": "dist/index.js",
 	"source": "src/index.tsx",
 	"engines": {
 		"node": ">=10"
 	},
 	"scripts": {
-		"build": "microbundle-crl --no-compress --format modern,cjs",
-		"start": "microbundle-crl watch --no-compress --format modern,cjs",
+		"start": "tsdx watch",
+		"build": "rimraf dist && tsdx build",
+		"test": "tsdx test",
+		"test:tsc": "tsc --pretty --noEmit",
 		"prepare": "run-s build",
-		"test": "run-s test:unit test:lint test:build",
 		"test:build": "run-s build",
 		"test:lint": "eslint ./src --ext ts --ext tsx --fix",
 		"test:unit": "cross-env CI=1 react-scripts test --env=jsdom",
@@ -24,11 +25,14 @@
 		"deploy": "gh-pages -d example/build"
 	},
 	"peerDependencies": {
-		"@chakra-ui/core": "^0.7.0",
-		"react": "^16.0.0"
+		"@chakra-ui/react": ">= 1.0.0",
+		"framer-motion": ">= 2.9.4",
+		"react": ">= 16.8.1"
 	},
 	"devDependencies": {
-		"@chakra-ui/core": "^0.8.0",
+		"@chakra-ui/react": "^1.0.1",
+		"@emotion/react": "^11.1.1",
+		"@emotion/styled": "^11.0.0",
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.5.0",
 		"@testing-library/user-event": "^7.2.1",
@@ -38,43 +42,54 @@
 		"@types/react": "^16.9.27",
 		"@types/react-dom": "^16.9.7",
 		"@types/react-highlight-words": "^0.16.1",
+		"@types/react-test-renderer": "^16.9.3",
 		"@typescript-eslint/eslint-plugin": "^2.26.0",
 		"@typescript-eslint/parser": "^2.26.0",
-		"babel-eslint": "^10.0.3",
 		"cross-env": "^7.0.2",
-		"emotion-theming": "^10.0.27",
 		"eslint": "^6.8.0",
 		"eslint-config-prettier": "^6.7.0",
 		"eslint-config-standard": "^14.1.0",
-		"eslint-config-standard-react": "^9.2.0",
 		"eslint-plugin-import": "^2.18.2",
 		"eslint-plugin-node": "^11.0.0",
 		"eslint-plugin-prettier": "^3.1.1",
-		"eslint-plugin-promise": "^4.2.1",
 		"eslint-plugin-react": "^7.17.0",
-		"eslint-plugin-standard": "^4.0.1",
+		"framer-motion": "^2.9.4",
 		"gh-pages": "^2.2.0",
-		"match-sorter": "^4.2.1",
-		"microbundle-crl": "^0.13.10",
 		"npm-run-all": "^4.1.5",
 		"prettier": "^2.0.4",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
-		"react-highlight-words": "^0.16.0",
-		"react-scripts": "^3.4.1",
-		"react-use": "^15.3.4",
+		"react-scripts": "^4.0.3",
+		"react-test-renderer": "^17.0.1",
+		"rimraf": "^3.0.2",
+		"tsdx": "^0.14.1",
+		"tslib": "^2.0.3",
 		"typescript": "^3.7.5"
 	},
-	"files": [ "dist" ],
+	"files": [
+		"dist"
+	],
 	"publishConfig": {
 		"access": "public"
 	},
-	"keywords": [ "Chakra UI", "downshift", "autocomplete", "combobox", "react", "chakra-ui", "multiselect-chakra-ui" ],
+	"keywords": [
+		"Chakra UI",
+		"downshift",
+		"autocomplete",
+		"combobox",
+		"react",
+		"chakra-ui",
+		"multiselect-chakra-ui"
+	],
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/koolamusic/chakra-ui-autocomplete.git"
 	},
 	"dependencies": {
-		"downshift": "^6.0.6"
+		"@chakra-ui/icons": "^1.0.3",
+		"downshift": "^6.0.6",
+		"match-sorter": "^4.2.1",
+		"react-highlight-words": "^0.16.0",
+		"react-use": "^15.3.4"
 	}
 }
