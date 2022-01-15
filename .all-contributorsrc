@@ -15,6 +15,17 @@
         "test",
         "code"
       ]
+    },
+    {
+
+      "login": "srcristofher",
+      "name": "sr.cristofher",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67389482?v=4",
+      "profile": "https://believeplus.com/",
+      "contributions": [
+        "doc"
+
+      ]
     }
   ],
   "contributorsPerLine": 7,

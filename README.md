@@ -244,6 +244,7 @@ export default function App() {
 <table>
   <tr>
     <td align="center"><a href="https://github.com/koolamusic"><img src="https://avatars.githubusercontent.com/u/8960757?v=4?s=100" width="100px;" alt=""/><br /><sub><b>U.M Andrew</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=koolamusic" title="Documentation">📖</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=koolamusic" title="Tests">⚠️</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=koolamusic" title="Code">💻</a></td>
+    <td align="center"><a href="https://believeplus.com/"><img src="https://avatars.githubusercontent.com/u/67389482?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sr.cristofher</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=srcristofher" title="Documentation">📖</a></td>
   </tr>
 </table>
 
