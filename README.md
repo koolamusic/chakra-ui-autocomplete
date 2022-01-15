@@ -2,6 +2,9 @@
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![Financial Contributors on Open Collective](https://opencollective.com/chakra-ui-autocomplete/all/badge.svg?label=financial+contributors)](https://opencollective.com/chakra-ui-autocomplete) [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 > An Accessible Autocomplete Utility for [Chakra UI](github.com/chakra-ui/chakra-ui) that composes [Downshift](https://github.com/downshift-js/downshift) ComboBox
 
@@ -232,20 +235,17 @@ export default function App() {
 - [x] Add prop for Items Renderer to enable rendering of React Element
 - [ ] Ability to define `chakra-ui components` that will render in place of `Tags, MenuList, TextInput, Form Label` will check render props or headless UI patterns.
 
-## License
+## Contributors
 
-MIT © [koolamusic](https://github.com/koolamusic)
-
-## Contributors ✨
-
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
-
+### Code Contributors
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
 <!-- markdownlint-disable -->
 <table>
   <tr>
     <td align="center"><a href="https://github.com/it-nalon"><img src="https://avatars.githubusercontent.com/u/8491676?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco Nalon</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Tests">⚠️</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Code">💻</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Documentation">📖</a></td>
+    <td align="center"><a href="https://github.com/koolamusic"><img src="https://avatars.githubusercontent.com/u/8960757?v=4?s=100" width="100px;" alt=""/><br /><sub><b>U.M Andrew</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=koolamusic" title="Documentation">📖</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=koolamusic" title="Tests">⚠️</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=koolamusic" title="Code">💻</a></td>
+    <td align="center"><a href="https://believeplus.com/"><img src="https://avatars.githubusercontent.com/u/67389482?v=4?s=100" width="100px;" alt=""/><br /><sub><b>sr.cristofher</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=srcristofher" title="Documentation">📖</a></td>
   </tr>
 </table>
 
@@ -254,4 +254,32 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
+<a href="https://github.com/undefined/undefined/graphs/contributors"><img src="https://opencollective.com/chakra-ui-autocomplete/contributors.svg?width=890&button=false" /></a>
+
+### Financial Contributors
+
+Become a financial contributor and help us sustain our community. [[Contribute](https://opencollective.com/chakra-ui-autocomplete/contribute)]
+
+#### Individuals
+
+<a href="https://opencollective.com/chakra-ui-autocomplete"><img src="https://opencollective.com/chakra-ui-autocomplete/individuals.svg?width=890"></a>
+
+#### Organizations
+
+Support this project with your organization. Your logo will show up here with a link to your website. [[Contribute](https://opencollective.com/chakra-ui-autocomplete/contribute)]
+
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/0/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/0/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/1/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/1/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/2/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/2/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/3/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/3/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/4/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/4/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/5/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/5/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/6/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/6/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/7/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/7/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/8/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/8/avatar.svg"></a>
+<a href="https://opencollective.com/chakra-ui-autocomplete/organization/9/website"><img src="https://opencollective.com/chakra-ui-autocomplete/organization/9/avatar.svg"></a>
+
+## License
+
+MIT © [koolamusic](https://github.com/koolamusic)
