@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "kuasha420",
+      "name": "Arafat Zahan",
+      "avatar_url": "https://avatars.githubusercontent.com/u/6187401?v=4",
+      "profile": "http://kuasha.xyz",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "chakra-ui-autocomplete",
+  "projectOwner": "koolamusic",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
