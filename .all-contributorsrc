@@ -20,7 +20,8 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/8491676?v=4",
       "profile": "https://github.com/it-nalon",
       "contributions": [
-        ""
+        "docs",
+        "code"
       ]
     },
     {
@@ -83,7 +84,7 @@
       "avatar_url": "https://avatars.githubusercontent.com/u/67389482?v=4",
       "profile": "https://github.com/srcristofher",
       "contributions": [
-        ""
+        "docs"
       ]
     }
   ],
@@ -96,4 +97,6 @@
   "contributorsSortAlphabetically": false,
   "badgeTemplate": "[![All Contributors](https://img.shields.io/badge/all_contributors-<%= contributors.length %>-orange.svg?style=flat-square)](#contributors)",
   "contributorTemplate": "<a href=\"<%= contributor.profile %>\"><img src=\"<%= contributor.avatar_url %>\" width=\"<%= options.imageSize %>px;\" alt=\"\"/><br /><sub><b><%= contributor.name %></b></sub></a>"
+}
+  "skipCi": true
 }
