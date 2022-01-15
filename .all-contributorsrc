@@ -6,6 +6,16 @@
   "commit": false,
   "contributors": [
     {
+
+      "login": "vyder",
+      "name": "Vidur Murali",
+      "avatar_url": "https://avatars.githubusercontent.com/u/587136?v=4",
+      "profile": "https://vidur.io",
+      "contributions": [
+        "code"
+]
+},
+{
       "login": "koolamusic",
       "name": "U.M Andrew",
       "avatar_url": "https://avatars.githubusercontent.com/u/8960757?v=4",
@@ -25,7 +35,6 @@
       "profile": "https://believeplus.com/",
       "contributions": [
         "doc"
-
       ]
     }
   ],
