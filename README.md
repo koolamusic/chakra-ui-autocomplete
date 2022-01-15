@@ -243,6 +243,7 @@ export default function App() {
 <!-- markdownlint-disable -->
 <table>
   <tr>
+    <td align="center"><a href="https://demah.ir"><img src="https://avatars.githubusercontent.com/u/17513392?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Hamed Sedighi</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=herol3oy" title="Code">💻</a></td>
     <td align="center"><a href="http://akashsingh.blog"><img src="https://avatars.githubusercontent.com/u/9202515?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akash Singh</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=akash4393" title="Code">💻</a></td>
     <td align="center"><a href="https://ifbmt.info"><img src="https://avatars.githubusercontent.com/u/2472115?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Anthony Master</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=amaster507" title="Documentation">📖</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=amaster507" title="Tests">⚠️</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=amaster507" title="Code">💻</a></td>
     <td align="center"><a href="https://vidur.io"><img src="https://avatars.githubusercontent.com/u/587136?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Vidur Murali</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=vyder" title="Code">💻</a></td>
