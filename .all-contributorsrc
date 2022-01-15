@@ -6,7 +6,17 @@
   "commit": false,
   "contributors": [
     {
-
+      "login": "amaster507",
+      "name": "Anthony Master",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2472115?v=4",
+      "profile": "https://ifbmt.info",
+      "contributions": [
+        "doc",
+        "test",
+        "code"
+]
+},
+{
       "login": "vyder",
       "name": "Vidur Murali",
       "avatar_url": "https://avatars.githubusercontent.com/u/587136?v=4",
