@@ -1,0 +1,26 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "amaster507",
+      "name": "Anthony Master",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2472115?v=4",
+      "profile": "https://ifbmt.info",
+      "contributions": [
+        "doc",
+        "test",
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "chakra-ui-autocomplete",
+  "projectOwner": "koolamusic",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
