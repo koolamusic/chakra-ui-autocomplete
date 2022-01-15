@@ -245,7 +245,7 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/it-nalon"><img src="https://avatars.githubusercontent.com/u/8491676?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco Nalon</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Tests">⚠️</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/it-nalon"><img src="https://avatars.githubusercontent.com/u/8491676?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Marco Nalon</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Tests">⚠️</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Code">💻</a> <a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=it-nalon" title="Documentation">📖</a></td>
   </tr>
 </table>
 
