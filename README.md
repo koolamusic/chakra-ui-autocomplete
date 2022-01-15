@@ -1,5 +1,8 @@
 # Chakra-UI AutoComplete
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
 [![Financial Contributors on Open Collective](https://opencollective.com/chakra-ui-autocomplete/all/badge.svg?label=financial+contributors)](https://opencollective.com/chakra-ui-autocomplete) [![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
@@ -235,6 +238,19 @@ export default function App() {
 ## Contributors
 
 ### Code Contributors
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://akashsingh.blog"><img src="https://avatars.githubusercontent.com/u/9202515?v=4?s=100" width="100px;" alt=""/><br /><sub><b>Akash Singh</b></sub></a><br /><a href="https://github.com/koolamusic/chakra-ui-autocomplete/commits?author=akash4393" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
 
 This project exists thanks to all the people who contribute. [[Contribute](CONTRIBUTING.md)].
 <a href="https://github.com/undefined/undefined/graphs/contributors"><img src="https://opencollective.com/chakra-ui-autocomplete/contributors.svg?width=890&button=false" /></a>
