@@ -6,6 +6,15 @@
   "commit": false,
   "contributors": [
     {
+      "login": "akash4393",
+      "name": "Akash Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9202515?v=4",
+      "profile": "http://akashsingh.blog",
+      "contributions": [
+        "code"
+        ]
+     },
+     {
       "login": "amaster507",
       "name": "Anthony Master",
       "avatar_url": "https://avatars.githubusercontent.com/u/2472115?v=4",
