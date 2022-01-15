@@ -12,6 +12,75 @@
       "profile": "http://kuasha.xyz",
       "contributions": [
         "code"
+       ]
+     },
+     {
+      "login": "joaoviana",
+      "name": "João Viana",
+      "avatar_url": "https://avatars.githubusercontent.com/u/7611706?v=4",
+      "profile": "https://github.com/joaoviana",
+      "contributions": [
+        "code"
+        ]
+     },
+     {
+      "login": "herol3oy",
+      "name": "Hamed Sedighi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17513392?v=4",
+      "profile": "https://demah.ir",
+      "contributions": [
+        "code"
+        ]
+     },
+     {
+      "login": "akash4393",
+      "name": "Akash Singh",
+      "avatar_url": "https://avatars.githubusercontent.com/u/9202515?v=4",
+      "profile": "http://akashsingh.blog",
+      "contributions": [
+        "code"
+        ]
+     },
+     {
+      "login": "amaster507",
+      "name": "Anthony Master",
+      "avatar_url": "https://avatars.githubusercontent.com/u/2472115?v=4",
+      "profile": "https://ifbmt.info",
+      "contributions": [
+        "doc",
+        "test",
+        "code"
+]
+},
+{
+      "login": "vyder",
+      "name": "Vidur Murali",
+      "avatar_url": "https://avatars.githubusercontent.com/u/587136?v=4",
+      "profile": "https://vidur.io",
+      "contributions": [
+        "code"
+]
+},
+{
+      "login": "koolamusic",
+      "name": "U.M Andrew",
+      "avatar_url": "https://avatars.githubusercontent.com/u/8960757?v=4",
+      "profile": "https://github.com/koolamusic",
+      "contributions": [
+        "doc",
+        "test",
+        "code",
+        "doc"
+      ]
+    },
+    {
+
+      "login": "srcristofher",
+      "name": "sr.cristofher",
+      "avatar_url": "https://avatars.githubusercontent.com/u/67389482?v=4",
+      "profile": "https://believeplus.com/",
+      "contributions": [
+        "doc"
       ]
     }
   ],
