@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "herol3oy",
+      "name": "Hamed Sedighi",
+      "avatar_url": "https://avatars.githubusercontent.com/u/17513392?v=4",
+      "profile": "https://demah.ir",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "chakra-ui-autocomplete",
+  "projectOwner": "koolamusic",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
