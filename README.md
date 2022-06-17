@@ -212,7 +212,7 @@ export default function App() {
 | label                  | string   | Yes      | Input Form Label to describe the activity or process                                                                                                             |
 | highlightItemBg        | string   |          | For accessibility, you can define a custom color for the highlight color when user is typing also accept  props like `yellow.300` based on chakra theme provider |
 | onCreateItem           | Function | Yes      | Function to handle creating new Item                                                                                                                             |
-| optionFilterFunc       | Function | Yes      | You can define a custom Function to handle filter logic                                                                                                          |
+| optionFilterFunc       | Function |          | You can define a custom Function to handle filter logic                                                                                                          |
 | itemRenderer           | Function |          | Custom Function that can either return a JSX Element or String, in order to control how the list items within the Dropdown is rendered                           |
 | labelStyleProps        | Object   |          | Custom style props based on chakra-ui for labels, Example `{{ bg: 'gray.100', pt: '4'}}                                                                          |
 | inputStyleProps        | Object   |          | Custom style props based on chakra-ui for input field, Example`{{ bg: 'gray.100', pt: '4'}}                                                                      |
