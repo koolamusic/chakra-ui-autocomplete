@@ -113,9 +113,9 @@ export default function App() {
           onCreateItem={handleCreateItem}
           items={pickerItems}
           selectedItems={selectedItems}
-          onSelectedItemsChange={(changes) =>
+          onSelectedItemsChange={{(changes) => {
             handleSelectedItemsChange(changes.selectedItems)
-          }
+          }}}
         />
   );
 }
